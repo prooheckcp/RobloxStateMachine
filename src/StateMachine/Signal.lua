@@ -68,7 +68,7 @@ local function runEventHandlerInFreeThread(...)
 	end
 end
 
---[=[
+--[[
 	@within Signal
 	@interface SignalConnection
 	.Connected boolean
@@ -80,7 +80,7 @@ end
 	connection:Disconnect()
 	print(connection.Connected) --> false
 	```
-]=]
+]]
 
 -- Connection class
 local Connection = {}
@@ -130,13 +130,13 @@ setmetatable(Connection, {
 	end,
 })
 
---[=[
+--[[
 	@within Signal
 	@type ConnectionFn (...any) -> ()
 	A function connected to a signal.
-]=]
+]]
 
---[=[
+--[[
 	@class Signal
 	Signals allow events to be dispatched and handled.
 	For example:
@@ -147,14 +147,14 @@ setmetatable(Connection, {
 	end)
 	signal:Fire("Hello world!")
 	```
-]=]
+]]
 local Signal = {}
 Signal.__index = Signal
 
---[=[
+--[[
 	Constructs a new Signal
 	@return Signal
-]=]
+]]
 function Signal.new<T...>(): Signal<T...>
 	local self = setmetatable({
 		_handlerListHead = false,
@@ -163,7 +163,7 @@ function Signal.new<T...>(): Signal<T...>
 	return self
 end
 
---[=[
+--[[
 	Constructs a new Signal that wraps around an RBXScriptSignal.
 	@param rbxScriptSignal RBXScriptSignal -- Existing RBXScriptSignal to wrap
 	@return Signal
@@ -173,7 +173,7 @@ end
 	signal:Connect(function(part) print(part.Name .. " added") end)
 	Instance.new("Part").Parent = workspace
 	```
-]=]
+]]
 function Signal.Wrap<T...>(rbxScriptSignal: RBXScriptSignal): Signal<T...>
 	assert(
 		typeof(rbxScriptSignal) == "RBXScriptSignal",
@@ -186,16 +186,16 @@ function Signal.Wrap<T...>(rbxScriptSignal: RBXScriptSignal): Signal<T...>
 	return signal
 end
 
---[=[
+--[[
 	Checks if the given object is a Signal.
 	@param obj any -- Object to check
 	@return boolean -- `true` if the object is a Signal.
-]=]
+]]
 function Signal.Is(obj: any): boolean
 	return type(obj) == "table" and getmetatable(obj) == Signal
 end
 
---[=[
+--[[
 	@param fn ConnectionFn
 	@return SignalConnection
 	Connects a function to the signal, which will be called anytime the signal is fired.
@@ -205,7 +205,7 @@ end
 	end)
 	signal:Fire("Hello", 25)
 	```
-]=]
+]]
 function Signal:Connect(fn)
 	local connection = Connection.new(self, fn)
 	if self._handlerListHead then
@@ -217,16 +217,16 @@ function Signal:Connect(fn)
 	return connection
 end
 
---[=[
+--[[
 	@deprecated v1.3.0 -- Use `Signal:Once` instead.
 	@param fn ConnectionFn
 	@return SignalConnection
-]=]
+]]
 function Signal:ConnectOnce(fn)
 	return self:Once(fn)
 end
 
---[=[
+--[[
 	@param fn ConnectionFn
 	@return SignalConnection
 	Connects a function to the signal, which will be called the next time the signal fires. Once
@@ -238,7 +238,7 @@ end
 	signal:Fire("Hello", 25)
 	signal:Fire("This message will not go through", 10)
 	```
-]=]
+]]
 function Signal:Once(fn)
 	local connection
 	local done = false
@@ -265,12 +265,12 @@ end
 
 -- Disconnect all handlers. Since we use a linked list it suffices to clear the
 -- reference to the head handler.
---[=[
+--[[
 	Disconnects all connections from the signal.
 	```lua
 	signal:DisconnectAll()
 	```
-]=]
+]]
 function Signal:DisconnectAll()
 	local item = self._handlerListHead
 	while item do
@@ -284,7 +284,7 @@ end
 -- coRunnerThread, and any time the resulting thread yielded without returning
 -- to us, that means that it yielded to the Roblox scheduler and has been taken
 -- over by Roblox scheduling, meaning we have to make a new coroutine runner.
---[=[
+--[[
 	@param ... any
 	Fire the signal, which will call all of the connected functions with the given arguments.
 	```lua
@@ -292,7 +292,7 @@ end
 	-- Any number of arguments can be fired:
 	signal:Fire("Hello", 32, {Test = "Test"}, true)
 	```
-]=]
+]]
 function Signal:Fire(...)
 	local item = self._handlerListHead
 	while item do
@@ -306,13 +306,13 @@ function Signal:Fire(...)
 	end
 end
 
---[=[
+--[[
 	@param ... any
 	Same as `Fire`, but uses `task.defer` internally & doesn't take advantage of thread reuse.
 	```lua
 	signal:FireDeferred("Hello")
 	```
-]=]
+]]
 function Signal:FireDeferred(...)
 	local item = self._handlerListHead
 	while item do
@@ -321,7 +321,7 @@ function Signal:FireDeferred(...)
 	end
 end
 
---[=[
+--[[
 	@return ... any
 	@yields
 	Yields the current thread until the signal is fired, and returns the arguments fired from the signal.
@@ -334,7 +334,7 @@ end
 	end)
 	signal:Fire("Hello", 32)
 	```
-]=]
+]]
 function Signal:Wait()
 	local waitingCoroutine = coroutine.running()
 	local connection
@@ -350,7 +350,7 @@ function Signal:Wait()
 	return coroutine.yield()
 end
 
---[=[
+--[[
 	Cleans up the signal.
 	Technically, this is only necessary if the signal is created using
 	`Signal.Wrap`. Connections should be properly GC'd once the signal
@@ -360,7 +360,7 @@ end
 	```lua
 	signal:Destroy()
 	```
-]=]
+]]
 function Signal:Destroy()
 	self:DisconnectAll()
 	local proxyHandler = rawget(self, "_proxyHandler")
