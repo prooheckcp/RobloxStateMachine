@@ -32,6 +32,8 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
     end
 
     RunService.Heartbeat:Connect(function(deltaTime: number)
+        self:_CheckTransitions(true)
+        
         local state: State.State? = self:_GetCurrentStateObject()
         
         if not state or getmetatable(state).OnHearBeat == state.OnHearBeat then
@@ -39,7 +41,6 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         end
 
         state:OnHearBeat(self._CustomData, deltaTime)
-        self:_CheckTransitions(true)
     end)
 
     self:_ChangeState(initialState)
