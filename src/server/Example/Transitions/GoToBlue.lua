@@ -4,6 +4,7 @@ local StateMachine = require(ReplicatedStorage.StateMachine)
 local Transition = StateMachine.Transition
 
 local GoToBlue = Transition.new("Blue")
+GoToBlue.OnHearbeat = true
 
 function GoToBlue:OnDataChanged(data)
     print("Time:", data.time)

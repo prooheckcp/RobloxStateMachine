@@ -1,6 +1,7 @@
 local Transition = {}
 Transition.__index = Transition
 Transition.TargetState = "" :: string
+Transition.OnHearbeat = true :: boolean -- If it should be checked every frame
 
 function Transition.new(targetState: string?)
     local self = setmetatable({}, Transition)

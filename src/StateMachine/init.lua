@@ -39,6 +39,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         end
 
         state:OnHearBeat(self._CustomData, deltaTime)
+        self:_CheckTransitions(true)
     end)
 
     self:_ChangeState(initialState)
@@ -70,12 +71,7 @@ function StateMachine:ChangeData(index: string, newValue: any): ()
 
     self._CustomData[index] = newValue
 
-    for _, transition: Transition.Transition in self:_GetCurrentStateObject().Transitions do
-        if transition:CanChangeState(self._CustomData) and transition:OnDataChanged(self._CustomData) then
-            self:_ChangeState(transition.TargetState)
-            break
-        end
-    end
+    self:_CheckTransitions(false)
 end
 
 --[=[
@@ -147,6 +143,24 @@ end
 ]=]
 function StateMachine:_GetCurrentStateObject(): State.State?
     return self._States[self:GetCurrentState()]
+end
+
+--[=[
+    Checks if we meet any condition to change the current state
+
+    @return ()
+]=]
+function StateMachine:_CheckTransitions(fromHeartbeat: boolean): ()
+    for _, transition: Transition.Transition in self:_GetCurrentStateObject().Transitions do
+        if fromHeartbeat and not transition.OnHearbeat then
+            continue
+        end
+
+        if transition:CanChangeState(self._CustomData) and transition:OnDataChanged(self._CustomData) then
+            self:_ChangeState(transition.TargetState)
+            break
+        end
+    end    
 end
 
 export type StateMachine = typeof(StateMachine.new(...))
