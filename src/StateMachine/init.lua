@@ -10,6 +10,8 @@ local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same n
 local StateMachine = {}
 StateMachine.__index = StateMachine
 StateMachine.StateChanged = nil :: Signal.Signal<string>?
+StateMachine.State = State
+StateMachine.Transition = Transition
 
 function StateMachine.new(initialState: string, states: {State.State}, initialData: {[string]: any}?): StateMachine
     local self = setmetatable({}, StateMachine)
@@ -73,6 +75,33 @@ function StateMachine:ChangeData(index: string, newValue: any): ()
             break
         end
     end
+end
+
+--[=[
+    Used to load thru a directory
+
+    @param directory Instance
+
+    @return {any}
+]=]
+function StateMachine:LoadDirectory(directory: Instance): {any}
+    local loadedFiles = {}
+
+    for _, child: Instance in directory:GetChildren() do
+        if not child:IsA("ModuleScript") then
+            continue
+        end
+        
+        local success: boolean, result: any = pcall(function()
+            return require(child)
+        end)
+
+        if success then
+            table.insert(loadedFiles, result)
+        end
+    end
+
+    return loadedFiles
 end
 
 --[=[
