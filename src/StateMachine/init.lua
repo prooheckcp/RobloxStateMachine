@@ -38,7 +38,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         self._States[state.Name] = stateClone
     end
 
-    RunService.Heartbeat:Connect(function(deltaTime: number)
+    self.heartBeat = RunService.Heartbeat:Connect(function(deltaTime: number)
         self:_CheckTransitions(true)
         
         local state: State.State? = self:_GetCurrentStateObject()
@@ -114,6 +114,19 @@ function StateMachine:LoadDirectory(directory: Instance): {any}
     end
 
     return loadedFiles
+end
+
+function StateMachine:Destroy(): ()
+    local state: State.State? = self:_GetCurrentStateObject()
+
+    if state then
+        state:OnLeave(self._CustomData)
+    end
+
+    if self.heartBeat then
+        self.heartBeat:Disconnect()
+        self.heartBeat = nil
+    end
 end
 
 --[=[
