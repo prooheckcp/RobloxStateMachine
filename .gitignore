@@ -4,3 +4,7 @@
 # Roblox Studio lock files
 /*.rbxlx.lock
 /*.rbxl.lock
+
+# Ignore Website/Metadata for json
+/build
+/sourcemap.json
