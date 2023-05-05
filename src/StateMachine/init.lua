@@ -3,6 +3,7 @@ local RunService = game:GetService("RunService")
 local State = require(script.State)
 local Transition = require(script.Transition)
 local Signal = require(script.Signal)
+local Copy = require(script.Copy)
 
 local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same name"
 
@@ -23,7 +24,10 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
             error(DUPLICATE_ERROR.." ,"..state.Name, 2)
         end
 
-        self._States[state.Name] = state
+        local stateClone: State.State = Copy(state)
+
+        stateClone:OnInit(self._CustomData)
+        self._States[state.Name] = stateClone
     end
 
     RunService.Heartbeat:Connect(function(deltaTime: number)
