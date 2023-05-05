@@ -37,7 +37,7 @@ end
 
     Called every frame after the physics simulation while in this state
 ]=]
-function State:OnHearBeat(data: {[string]: any}): ()
+function State:OnHearBeat(data: {[string]: any}, deltaTime: number): ()
     assert(data)
 end
 

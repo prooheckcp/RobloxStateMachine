@@ -1,3 +1,5 @@
+local RunService = game:GetService("RunService")
+
 local State = require(script.State)
 local Transition = require(script.Transition)
 local Signal = require(script.Signal)
@@ -23,6 +25,16 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
 
         self._States[state.Name] = state
     end
+
+    RunService.Heartbeat:Connect(function(deltaTime: number)
+        local state: State.State? = self:_GetCurrentStateObject()
+        
+        if not state or getmetatable(state).OnHearBeat == state.OnHearBeat then
+            return
+        end
+
+        state:OnHearBeat(self._CustomData, deltaTime)
+    end)
 
     return self
 end
@@ -69,12 +81,18 @@ end
     @return ()
 ]=]
 function StateMachine:_ChangeState(newState: string): ()
+    local previousState: State.State? = self:_GetCurrentStateObject()
     local state: State.State? = self._States[newState]
 
     if not state then
         return
     end
 
+    if previousState then
+        previousState:OnLeave(self._CustomData)
+    end
+
+    state:OnEnter(self._CustomData)
     self._CurrentState = newState
     self.StateChanged:Fire(newState)
 end
@@ -86,7 +104,7 @@ end
 
     @return State
 ]=]
-function StateMachine:_GetCurrentStateObject(): State.State
+function StateMachine:_GetCurrentStateObject(): State.State?
     return self._States[self:GetCurrentState()]
 end
 
