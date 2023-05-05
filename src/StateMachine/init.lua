@@ -7,6 +7,13 @@ local Copy = require(script.Copy)
 
 local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same name"
 
+--[=[
+    @class StateMachine
+
+    State Machines consist of state managers that dictate at which state does an object currently meet at.
+    It allows us to easily manage what should an object do at each given state and when/how it should change
+    between them
+]=]
 local StateMachine = {}
 StateMachine.__index = StateMachine
 StateMachine.StateChanged = nil :: Signal.Signal<string>?

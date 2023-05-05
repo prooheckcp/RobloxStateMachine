@@ -1,3 +1,8 @@
+--[=[
+    @class Transition
+
+    Dictates how and when should you move between different states
+]=]
 local Transition = {}
 Transition.__index = Transition
 Transition.TargetState = "" :: string

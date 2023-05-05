@@ -1,5 +1,11 @@
 local Transition = require(script.Parent.Transition)
 
+--[=[
+    @class State
+
+    Describes one of the many states an object can have. It also declares
+    how it should behave when it enters, is and leaves the given state
+]=]
 local State = {}
 State.__index = State
 State.Name = "" :: string
