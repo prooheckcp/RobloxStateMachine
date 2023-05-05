@@ -16,7 +16,6 @@ StateMachine.Transition = Transition
 function StateMachine.new(initialState: string, states: {State.State}, initialData: {[string]: any}?): StateMachine
     local self = setmetatable({}, StateMachine)
     
-    self:_ChangeState(initialState)
     self._CustomData = initialData or {} :: {[string]: any}
     self._States = {} :: {[string]: State.State}
     self.StateChanged = Signal.new() :: Signal.Signal<string>
@@ -27,7 +26,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         end
 
         local stateClone: State.State = Copy(state)
-
+        print(stateClone)
         stateClone:OnInit(self._CustomData)
         self._States[state.Name] = stateClone
     end
@@ -41,6 +40,8 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
 
         state:OnHearBeat(self._CustomData, deltaTime)
     end)
+
+    self:_ChangeState(initialState)
 
     return self
 end
