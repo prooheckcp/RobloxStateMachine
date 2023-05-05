@@ -1,9 +1,9 @@
 local Transition = {}
 Transition.__index = Transition
 
-function Transition.new(): Transition
+function Transition.new(targetState: string?): Transition
     local self = setmetatable({}, Transition)
-    self.TargetState = "" :: string
+    self.TargetState = targetState or "" :: string
 
     return self
 end
