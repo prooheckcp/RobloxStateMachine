@@ -14,6 +14,42 @@ function State.new(stateName: string?)
     return self
 end
 
+--[=[
+    [Virtual method]
+
+    Called whenever a state machine is created with this state
+]=]
+function State:OnInit(data: {[string]: any}): ()
+    assert(data)
+end
+
+--[=[
+    [Virtual method]
+
+    Called whenever you enter this state
+]=]
+function State:OnEnter(data: {[string]: any}): ()
+    assert(data)
+end
+
+--[=[
+    [Virtual method]
+
+    Called every frame after the physics simulation while in this state
+]=]
+function State:OnHearBeat(data: {[string]: any}): ()
+    assert(data)
+end
+
+--[=[
+    [Virtual method]
+
+    Called whenever you leave this state
+]=]
+function State:OnLeave(data: {[string]: any}): ()
+    assert(data)
+end
+
 export type State = typeof(State)
 
 return State

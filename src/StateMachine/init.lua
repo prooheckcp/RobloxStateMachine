@@ -11,7 +11,7 @@ StateMachine.StateChanged = nil :: Signal.Signal<string>?
 function StateMachine.new(initialState: string, states: {State.State}, initialData: {[string]: any}?): StateMachine
     local self = setmetatable({}, StateMachine)
     
-    self._CurrentState = initialState
+    self:_ChangeState(initialState)
     self._CustomData = initialData or {} :: {[string]: any}
     self._States = {} :: {[string]: State.State}
     self.StateChanged = Signal.new() :: Signal.Signal<string>
