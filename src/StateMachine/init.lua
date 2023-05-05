@@ -1,4 +1,7 @@
 local State = require(script.State)
+local Transition = require(script.Transition)
+
+local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same name"
 
 local StateMachine = {}
 StateMachine.__index = StateMachine
@@ -11,6 +14,10 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
     self._States = {} :: {[string]: State.State}
 
     for _, state: State.State in states do -- Load the states
+        if self._States[state.Name] then
+            error(DUPLICATE_ERROR.." ,"..state.Name, 2)
+        end
+
         self._States[state.Name] = state
     end
 
@@ -40,6 +47,43 @@ function StateMachine:ChangeData(index: string, newValue: any): ()
     end
 
     self._CustomData[index] = newValue
+
+    for _, transition: Transition.Transition in self:_GetCurrentStateObject().Transitions do
+        if transition:CanChangeState(self._CustomData) and transition:OnDataChanged(self._CustomData) then
+            self:_ChangeState(transition.TargetState)
+            break
+        end
+    end
+end
+
+--[=[
+    Called to change the current state of the state machine
+
+    @private
+
+    @param newState string
+
+    @return ()
+]=]
+function StateMachine:_ChangeState(newState: string): ()
+    local state: State.State? = self._States[newState]
+
+    if not state then
+        return
+    end
+
+    self._CurrentState = newState
+end
+
+--[=[
+    Gets the current state object of the state machine
+    
+    @private
+
+    @return State
+]=]
+function StateMachine:_GetCurrentStateObject(): State.State
+    return self._States[self:GetCurrentState()]
 end
 
 export type StateMachine = typeof(StateMachine.new(...))
