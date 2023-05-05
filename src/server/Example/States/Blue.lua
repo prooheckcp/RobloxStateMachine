@@ -1,15 +1,12 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local StateMachine = require(ReplicatedStorage.StateMachine)
-local GoToBlue = require(script.Parent.Parent.Transitions.GoToBlue)
-
 local State = StateMachine.State
 
-local Default = State.new("Default")
-Default.Transitions = {GoToBlue}
+local Default = State.new("Blue")
 
 function Default:OnEnter(data)
-    data.part.Color = Color3.fromRGB(255, 0, 0)
+    data.part.Color = Color3.fromRGB(0, 166, 255)
 end
 
 return Default

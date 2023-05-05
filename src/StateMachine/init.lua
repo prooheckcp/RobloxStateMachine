@@ -26,7 +26,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         end
 
         local stateClone: State.State = Copy(state)
-        print(stateClone)
+        
         stateClone:OnInit(self._CustomData)
         self._States[state.Name] = stateClone
     end
@@ -76,6 +76,13 @@ function StateMachine:ChangeData(index: string, newValue: any): ()
             break
         end
     end
+end
+
+--[=[
+    Gets the custom data
+]=]
+function StateMachine:GetData(): {[string]: any}
+    return self._CustomData
 end
 
 --[=[
