@@ -1,10 +1,12 @@
 local State = require(script.State)
 local Transition = require(script.Transition)
+local Signal = require(script.Signal)
 
 local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same name"
 
 local StateMachine = {}
 StateMachine.__index = StateMachine
+StateMachine.StateChanged = nil :: Signal.Signal<string>?
 
 function StateMachine.new(initialState: string, states: {State.State}, initialData: {[string]: any}?): StateMachine
     local self = setmetatable({}, StateMachine)
@@ -12,6 +14,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
     self._CurrentState = initialState
     self._CustomData = initialData or {} :: {[string]: any}
     self._States = {} :: {[string]: State.State}
+    self.StateChanged = Signal.new() :: Signal.Signal<string>
 
     for _, state: State.State in states do -- Load the states
         if self._States[state.Name] then
@@ -73,11 +76,12 @@ function StateMachine:_ChangeState(newState: string): ()
     end
 
     self._CurrentState = newState
+    self.StateChanged:Fire(newState)
 end
 
 --[=[
     Gets the current state object of the state machine
-    
+
     @private
 
     @return State
