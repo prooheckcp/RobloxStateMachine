@@ -1,0 +1,4 @@
+{
+    "name": "robloxstatemachine",
+    "tree": {"$path":"src/StateMachine"}
+}

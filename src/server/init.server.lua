@@ -1,10 +1,10 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local StateMachine = require(ReplicatedStorage.StateMachine)
+local RobloxStateMachine = require(ReplicatedStorage.RobloxStateMachine)
 
-local exampleStateMachine: StateMachine.StateMachine = StateMachine.new(
+local exampleStateMachine: RobloxStateMachine.RobloxStateMachine = RobloxStateMachine.new(
     "Default",
-    StateMachine:LoadDirectory(script.Example.States), 
+    RobloxStateMachine:LoadDirectory(script.Example.States), 
     {
         part = workspace.Example,
         time = tick(),

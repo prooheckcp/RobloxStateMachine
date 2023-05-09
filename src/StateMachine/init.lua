@@ -20,7 +20,31 @@ StateMachine.StateChanged = nil :: Signal.Signal<string>?
 StateMachine.State = State
 StateMachine.Transition = Transition
 
-function StateMachine.new(initialState: string, states: {State.State}, initialData: {[string]: any}?): StateMachine
+--[=[
+    Used to create a new State Machine. It expects 3 arguments being the third one an optional one
+
+    ```lua
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+    local RobloxStateMachine = require(ReplicatedStorage.RobloxStateMachine)
+
+    local exampleStateMachine: RobloxStateMachine.RobloxStateMachine = RobloxStateMachine.new(
+        "Default",
+        RobloxStateMachine:LoadDirectory(script.Example.States), 
+        {
+            part = workspace.Example,
+            time = tick(),
+        }
+    )
+    ```
+
+    @param initialState string -- The name of the state at which it should start
+    @param states {State.State} -- An array of the states this state machine should have
+    @param initialData {[string]: any}? -- The starting data to be used by the states
+
+    @return RobloxStateMachine
+]=]
+function StateMachine.new(initialState: string, states: {State.State}, initialData: {[string]: any}?): RobloxStateMachine
     local self = setmetatable({}, StateMachine)
     
     self._CustomData = initialData or {} :: {[string]: any}
@@ -65,7 +89,14 @@ function StateMachine:GetCurrentState(): string
 end
 
 --[=[
-    Changing data request
+    Changing data request. You can also just Get the data and change the data at run time.
+
+    ```lua
+    local stateMachine = RobloxStateMachine.new("state", states, {health = 0})
+
+    stateMachine:GetData().health = 50 -- This is the same as
+    stateMachine:ChangeData("Health", 50) -- this
+    ```
 
     @param index string
     @param newValue any
@@ -83,14 +114,33 @@ function StateMachine:ChangeData(index: string, newValue: any): ()
 end
 
 --[=[
-    Gets the custom data
+    Gets the custom data of this state machine object.
+
+    ```lua
+    local stateMachine = RobloxStateMachine.new("Start", {state1, state2}, {health = 20})
+
+    print(stateMachine:GetData().health) -- 20
+    ```
+
+    @return {[string]: any}
 ]=]
 function StateMachine:GetData(): {[string]: any}
     return self._CustomData
 end
 
 --[=[
-    Used to load thru a directory
+    Used to load thru a directory. It's specially useful to load states and or transitions!
+
+    ```lua
+    local exampleStateMachine: RobloxStateMachine.RobloxStateMachine = RobloxStateMachine.new(
+        "Default",
+        RobloxStateMachine:LoadDirectory(script.Example.States), 
+        {
+            part = workspace.Example,
+            time = tick(),
+        }
+    )
+    ```
 
     @param directory Instance
 
@@ -116,6 +166,20 @@ function StateMachine:LoadDirectory(directory: Instance): {any}
     return loadedFiles
 end
 
+--[=[
+    If you wish to stop using the state machine at any point you should then clear
+    it from the memory. Call Destroy whenever you are done with the state machine.
+
+    ```lua
+    local stateMachine = RobloxStateMachine.new(...)
+
+    task.wait(5)
+
+    stateMachine:Destroy()
+    ```
+
+    @return ()
+]=]
 function StateMachine:Destroy(): ()
     local state: State.State? = self:_GetCurrentStateObject()
 
@@ -167,7 +231,12 @@ function StateMachine:_GetCurrentStateObject(): State.State?
 end
 
 --[=[
-    Checks if we meet any condition to change the current state
+    Checks if we meet any condition to change the current state.
+    If any of the transitions returns true then we should change the current state
+
+    @private
+
+    @param fromHeartbeat boolean
 
     @return ()
 ]=]
@@ -184,6 +253,6 @@ function StateMachine:_CheckTransitions(fromHeartbeat: boolean): ()
     end    
 end
 
-export type StateMachine = typeof(StateMachine.new(...))
+export type RobloxStateMachine = typeof(StateMachine)
 
 return StateMachine
