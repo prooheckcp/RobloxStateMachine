@@ -3,7 +3,7 @@
 
   
 
-[Documentation](https://prooheckcp.github.io//RobloxStateMachine) | [Source](https://github.com/prooheckcp/RobloxStateMachine)
+[Documentation](https://prooheckcp.github.io/RobloxStateMachine) | [Source](https://github.com/prooheckcp/RobloxStateMachine)
 
   
 # 🏫 Introduction
@@ -18,7 +18,9 @@ State machines can help make game development more efficient and easier to manag
 There are 3 different ways of installing this package into your project! You can either download it from the releases page, download the Roblox model or install it via Wally!
 
 Wally: https://wally.run/package/prooheckcp/robloxstatemachine
+
 Roblox Model: https://www.roblox.com/library/13401856320/RobloxStateMachine
+
 Releases: https://github.com/prooheckcp/RobloxStateMachine/releases
 
 # 📙 Tutorial
@@ -31,10 +33,12 @@ Remember, the main purpose we use State Machines to begin with is so we can brea
 
 ### A. First Create 2 folders
 ![](https://cdn.discordapp.com/attachments/670023265455964198/1105650053118431342/Screenshot_2023-05-10_at_01.18.06.png)
+
 We will be using 1 folder to group the states and the second one to group the transitions! Now let's start by making 2 states and 2 transitions.
 
 ### B. Create 2 ModuleScripts in each folder as the following example
 ![](https://cdn.discordapp.com/attachments/670023265455964198/1105650694846947459/Screenshot_2023-05-10_at_01.20.53.png)
+
 In this example we will be creating a state machine that manages the color of a part! it will have 2 states: a red and a blue colour.
 So we want two states: Blue and Red. We also want to make 2 transitions that will allow us to go from blue to red and from red to blue!
 
