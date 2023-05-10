@@ -23,7 +23,10 @@ State.Transitions = {} :: {Transition.Transition}
     local State = StateMachine.State
 
     local Default = State.new("Blue") -- The name of this state is "Blue"
-
+    Default.Transitions = { -- The transitions that will be listened to while in the blue state
+        transition1,
+        transition2
+    }
     function Default:OnEnter(data)
         data.part.Color = Color3.fromRGB(0, 166, 255) --This will turn the part Blue when it enters the state blue
     end
