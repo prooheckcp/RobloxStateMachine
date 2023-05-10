@@ -74,7 +74,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
             return
         end
 
-        task.spawn(state:OnHearBeat(self._CustomData, deltaTime)
+        task.spawn(state.OnHearBeat, state, self._CustomData, deltaTime)
     end)
 
     self:_ChangeState(initialState)
@@ -225,10 +225,10 @@ function StateMachine:_ChangeState(newState: string): ()
     end
 
     if previousState then
-        previousState:OnLeave(self._CustomData)
+        task.spawn(previousState.OnLeave, previousState, self._CustomData)
     end
 
-    state:OnEnter(self._CustomData)
+    task.spawn(state.OnEnter, state, self._CustomData)
     self._CurrentState = newState
     self.StateChanged:Fire(newState)
 end
