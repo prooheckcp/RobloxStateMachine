@@ -1,6 +1,6 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local StateMachine = require(ReplicatedStorage.StateMachine)
+local StateMachine = require(ReplicatedStorage.RobloxStateMachine)
 local GoToBlue = require(script.Parent.Parent.Transitions.GoToBlue)
 
 local State = StateMachine.State
