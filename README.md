@@ -18,7 +18,7 @@ State machines can help make game development more efficient and easier to manag
 There are 3 different ways of installing this package into your project! You can either download it from the releases page, download the Roblox model or install it via Wally!
 
 Wally: https://wally.run/package/prooheckcp/robloxstatemachine
-Roblox Model: TBD
+Roblox Model: https://www.roblox.com/library/13401856320/RobloxStateMachine
 Releases: https://github.com/prooheckcp/RobloxStateMachines/releases
 
 # 📙 Tutorial
@@ -234,8 +234,11 @@ Red.Transitions = {
 ## 7. Watch and enjoy!
 Now that we have finally done all of this you can see it in action! Just press play and enjoy seeing the State Machine Working!
 
+Had problems during the tutorial? Check the copy unlocked place here:
+https://www.roblox.com/games/13401789032/RobloxStateMachine-Copy-Unlocked
 
 # ⭐ Contributing
+Please leave a star on [GitHub](https://github.com/prooheckcp/RobloxStateMachines), it helps a lot!
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
