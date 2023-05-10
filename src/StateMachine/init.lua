@@ -194,6 +194,17 @@ function StateMachine:Destroy(): ()
 end
 
 --[=[
+    Forcelly changes the current state of our state machine to a new one
+
+    @param newState string -- The name of the new state
+
+    @return ()
+]=]
+function StateMachine:ChangeState(newState: string): ()
+    self:_ChangeState(newState)
+end
+
+--[=[
     Called to change the current state of the state machine
 
     @private
