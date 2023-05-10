@@ -3,7 +3,7 @@
 
   
 
-[Documentation](https://prooheckcp.github.io//RobloxStateMachines) | [Source](https://github.com/prooheckcp/RobloxStateMachines)
+[Documentation](https://prooheckcp.github.io//RobloxStateMachine) | [Source](https://github.com/prooheckcp/RobloxStateMachine)
 
   
 # 🏫 Introduction
@@ -19,7 +19,7 @@ There are 3 different ways of installing this package into your project! You can
 
 Wally: https://wally.run/package/prooheckcp/robloxstatemachine
 Roblox Model: https://www.roblox.com/library/13401856320/RobloxStateMachine
-Releases: https://github.com/prooheckcp/RobloxStateMachines/releases
+Releases: https://github.com/prooheckcp/RobloxStateMachine/releases
 
 # 📙 Tutorial
 Please make sure you've installed the RobloxStateMachine before you decide to jump into the tutorial!
