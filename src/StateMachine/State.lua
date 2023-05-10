@@ -10,6 +10,7 @@ local State = {}
 State.__index = State
 State.Name = "" :: string
 State.Transitions = {} :: {Transition.Transition}
+State._changeState = nil :: (newState: string)->()?
 
 --[=[
     Used to create a new State. The state should manage how the object should behave during
@@ -45,6 +46,21 @@ function State.new(stateName: string?): State
     self.Transitions = {}
 
     return self
+end
+
+--[=[
+    Forcelly changes the current state of our state machine to a new one
+
+    @param newState string -- The name of the new state
+
+    @return ()
+]=]
+function State:ChangeState(newState: string): ()
+    if not self._changeState then
+        return
+    end
+
+    self._changeState(newState)
 end
 
 --[=[

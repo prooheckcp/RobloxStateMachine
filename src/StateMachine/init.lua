@@ -57,7 +57,10 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         end
 
         local stateClone: State.State = Copy(state)
-        
+        stateClone._changeState = function(newState: string)
+            self:ChangeState(newState)
+        end
+
         stateClone:OnInit(self._CustomData)
         self._States[state.Name] = stateClone
     end
