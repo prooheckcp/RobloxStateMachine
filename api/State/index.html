@@ -3,74 +3,215 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v2.3.1">
-<title data-rh="true">State | RobloxStateMachines</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://prooheckcp.github.io/RobloxStateMachines/api/State"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="State | RobloxStateMachines"><meta data-rh="true" name="description" content="Describes one of the many states an object can have. It also declares
+<title data-rh="true">State | RobloxStateMachine</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://prooheckcp.github.io/RobloxStateMachine/api/State"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="State | RobloxStateMachine"><meta data-rh="true" name="description" content="Describes one of the many states an object can have. It also declares
 how it should behave when it enters, is and leaves the given state"><meta data-rh="true" property="og:description" content="Describes one of the many states an object can have. It also declares
-how it should behave when it enters, is and leaves the given state"><link data-rh="true" rel="canonical" href="https://prooheckcp.github.io/RobloxStateMachines/api/State"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachines/api/State" hreflang="en"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachines/api/State" hreflang="x-default"><link rel="stylesheet" href="/RobloxStateMachines/assets/css/styles.19a5646f.css">
-<link rel="preload" href="/RobloxStateMachines/assets/js/runtime~main.7744e7dd.js" as="script">
-<link rel="preload" href="/RobloxStateMachines/assets/js/main.1eda0274.js" as="script">
+how it should behave when it enters, is and leaves the given state"><link data-rh="true" rel="canonical" href="https://prooheckcp.github.io/RobloxStateMachine/api/State"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachine/api/State" hreflang="en"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachine/api/State" hreflang="x-default"><link rel="stylesheet" href="/RobloxStateMachine/assets/css/styles.19a5646f.css">
+<link rel="preload" href="/RobloxStateMachine/assets/js/runtime~main.f1a3205f.js" as="script">
+<link rel="preload" href="/RobloxStateMachine/assets/js/main.0d56752b.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
-<div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/RobloxStateMachines/"><b class="navbar__title text--truncate">RobloxStateMachines</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/RobloxStateMachines/api/">API</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/prooheckcp/RobloxStateMachines" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="searchBox_ZlJk"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input type="search" id="search_input_react" placeholder="Press S to Search..." aria-label="Search" class="navbar__search-input search-bar"></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/RobloxStateMachines/api/State">​State</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/RobloxStateMachines/api/StateMachine">​State​Machine</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/RobloxStateMachines/api/Transition">​Transition</a></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">State</span></h1><div class="luaClassTags_EipM"></div><div>
+<div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/RobloxStateMachine/"><b class="navbar__title text--truncate">RobloxStateMachine</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/RobloxStateMachine/api/">API</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/prooheckcp/RobloxStateMachine" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="searchBox_ZlJk"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input type="search" id="search_input_react" placeholder="Press S to Search..." aria-label="Search" class="navbar__search-input search-bar"></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/RobloxStateMachine/api/State">​State</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/RobloxStateMachine/api/StateMachine">​State​Machine</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/RobloxStateMachine/api/Transition">​Transition</a></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">State</span></h1><div class="luaClassTags_EipM"></div><div>
 <p>
   Describes one of the many states an object can have. It also declares
   how it should behave when it enters, is and leaves the given state
 </p>
-</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnInit"><code style="text-decoration:none">OnInit</code><a href="#OnInit" class="hash-link" aria-label="Direct link to OnInit" title="Direct link to OnInit">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachines/blob/master/src/StateMachine/State.lua#L28"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnInit</code><code>(</code><code>data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>) → </code><code>(</code><code>)</code></div><div>
-<p>[Virtual method]</p>
-<p>Called whenever a state machine is created with this state</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnEnter"><code style="text-decoration:none">OnEnter</code><a href="#OnEnter" class="hash-link" aria-label="Direct link to OnEnter" title="Direct link to OnEnter">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachines/blob/master/src/StateMachine/State.lua#L37"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnEnter</code><code>(</code><code>data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>) → </code><code>(</code><code>)</code></div><div>
-<p>[Virtual method]</p>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a href="#new" class="hash-link" aria-label="Direct link to new" title="Direct link to new">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L42"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><code>stateName<!-- -->: </code><code class="blue_P4bS">string?</code><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RobloxStateMachine/api/State">State</a></code></div><div>
+<p>
+  Used to create a new State. The state should manage how the object should behave during
+  that given state. I personally recommend having your states in their own files for organizational
+  purposes
+</p>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> ReplicatedStorage <span class="token operator">=</span> game<span class="token punctuation">:</span><span class="token function">GetService</span><span class="token punctuation">(</span><span class="token string">"ReplicatedStorage"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">local</span> StateMachine <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span>ReplicatedStorage<span class="token punctuation">.</span>RobloxStateMachine<span class="token punctuation">)</span>
+<span class="token keyword">local</span> State <span class="token operator">=</span> StateMachine<span class="token punctuation">.</span>State
+
+<span class="token keyword">local</span> Default <span class="token operator">=</span> State<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"Blue"</span><span class="token punctuation">)</span> <span class="token comment">-- The name of this state is "Blue"</span>
+Default<span class="token punctuation">.</span>Transitions <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token comment">-- The transitions that will be listened to while in the blue state</span>
+    transition1<span class="token punctuation">,</span>
+    transition2
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> Default<span class="token punctuation">:</span><span class="token function">OnEnter</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    data<span class="token punctuation">.</span>part<span class="token punctuation">.</span>Color <span class="token operator">=</span> Color3<span class="token punctuation">.</span><span class="token function">fromRGB</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">166</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span> <span class="token comment">--This will turn the part Blue when it enters the state blue</span>
+<span class="token keyword">end</span>
+
+<span class="token keyword">return</span> Default
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ChangeState"><code style="text-decoration:none">ChangeState</code><a href="#ChangeState" class="hash-link" aria-label="Direct link to ChangeState" title="Direct link to ChangeState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L58"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">ChangeState</code><code>(</code><div class="inset_uKQm"><div><code>newState<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
+<p>The name of the new state</p>
+</span></span></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
+<p>Forcelly changes the current state of our state machine to a new one</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnInit"><code style="text-decoration:none">OnInit</code><a href="#OnInit" class="hash-link" aria-label="Direct link to OnInit" title="Direct link to OnInit">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L84"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnInit</code><code>(</code><div class="inset_uKQm"><div><code>data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><span class="inlineDescription_G7Er">-- <span>
+<p>This is the data from the StateMachine itself!</p>
+</span></span></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
+<div class="admonition admonition-info alert alert--info">
+  <div class="admonition-heading">
+    <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+          <path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path>
+        </svg></span>info</h5>
+  </div>
+  <div class="admonition-content">
+    <p>This is a <strong>Virtual Method</strong>. Virtual Methods are meant to be overwritten</p>
+  </div>
+</div>
+<p>Called whenever a state machine is created with this state.</p>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">function</span> State<span class="token punctuation">:</span><span class="token function">OnInit</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"I was init!"</span><span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>SomeStartingData <span class="token operator">=</span> <span class="token function">tick</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnEnter"><code style="text-decoration:none">OnEnter</code><a href="#OnEnter" class="hash-link" aria-label="Direct link to OnEnter" title="Direct link to OnEnter">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L105"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnEnter</code><code>(</code><div class="inset_uKQm"><div><code>data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><span class="inlineDescription_G7Er">-- <span>
+<p>This is the data from the StateMachine itself!</p>
+</span></span></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
+<div class="admonition admonition-info alert alert--info">
+  <div class="admonition-heading">
+    <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+          <path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path>
+        </svg></span>info</h5>
+  </div>
+  <div class="admonition-content">
+    <p>This is a <strong>Virtual Method</strong>. Virtual Methods are meant to be overwritten</p>
+  </div>
+</div>
 <p>Called whenever you enter this state</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnHearBeat"><code style="text-decoration:none">OnHearBeat</code><a href="#OnHearBeat" class="hash-link" aria-label="Direct link to OnHearBeat" title="Direct link to OnHearBeat">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachines/blob/master/src/StateMachine/State.lua#L46"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnHearBeat</code><code>(</code><div class="inset_uKQm"><div><code>data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code></div><div><code>deltaTime<!-- -->: </code><code class="blue_P4bS">number</code></div></div><code>) → </code><code>(</code><code>)</code></div><div>
-<p>[Virtual method]</p>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">function</span> State<span class="token punctuation">:</span><span class="token function">OnEnter</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    data<span class="token punctuation">.</span>part<span class="token punctuation">.</span>Color <span class="token operator">=</span> Color3<span class="token punctuation">.</span><span class="token function">fromRGB</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">166</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnHearBeat"><code style="text-decoration:none">OnHearBeat</code><a href="#OnHearBeat" class="hash-link" aria-label="Direct link to OnHearBeat" title="Direct link to OnHearBeat">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L127"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnHearBeat</code><code>(</code><div class="inset_uKQm"><div><code>data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>This is the data from the StateMachine itself!</p>
+</span></span></div><div><code>deltaTime<!-- -->: </code><code class="blue_P4bS">number</code></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
+<div class="admonition admonition-info alert alert--info">
+  <div class="admonition-heading">
+    <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+          <path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path>
+        </svg></span>info</h5>
+  </div>
+  <div class="admonition-content">
+    <p>This is a <strong>Virtual Method</strong>. Virtual Methods are meant to be overwritten</p>
+  </div>
+</div>
 <p>Called every frame after the physics simulation while in this state</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnLeave"><code style="text-decoration:none">OnLeave</code><a href="#OnLeave" class="hash-link" aria-label="Direct link to OnLeave" title="Direct link to OnLeave">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachines/blob/master/src/StateMachine/State.lua#L55"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnLeave</code><code>(</code><code>data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>) → </code><code>(</code><code>)</code></div><div>
-<p>[Virtual method]</p>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">function</span> Default<span class="token punctuation">:</span><span class="token function">OnHearBeat</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> deltaTime<span class="token punctuation">:</span> number<span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>timePassed <span class="token operator">+</span><span class="token operator">=</span> deltaTime
+<span class="token keyword">end</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnLeave"><code style="text-decoration:none">OnLeave</code><a href="#OnLeave" class="hash-link" aria-label="Direct link to OnLeave" title="Direct link to OnLeave">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L148"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnLeave</code><code>(</code><div class="inset_uKQm"><div><code>data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><span class="inlineDescription_G7Er">-- <span>
+<p>This is the data from the StateMachine itself!</p>
+</span></span></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
+<div class="admonition admonition-info alert alert--info">
+  <div class="admonition-heading">
+    <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+          <path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path>
+        </svg></span>info</h5>
+  </div>
+  <div class="admonition-content">
+    <p>This is a <strong>Virtual Method</strong>. Virtual Methods are meant to be overwritten</p>
+  </div>
+</div>
 <p>Called whenever you leave this state</p>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">function</span> State<span class="token punctuation">:</span><span class="token function">OnLeave</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    data<span class="token punctuation">.</span>stuff<span class="token punctuation">:</span><span class="token function">Clean</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
         {
+            &quot;name&quot;: &quot;new&quot;,
+            &quot;desc&quot;: &quot;Used to create a new State. The state should manage how the object should behave during\nthat given state. I personally recommend having your states in their own files for organizational\npurposes\n\n```lua\nlocal ReplicatedStorage = game:GetService(\&quot;ReplicatedStorage\&quot;)\n\nlocal StateMachine = require(ReplicatedStorage.RobloxStateMachine)\nlocal State = StateMachine.State\n\nlocal Default = State.new(\&quot;Blue\&quot;) -- The name of this state is \&quot;Blue\&quot;\nDefault.Transitions = { -- The transitions that will be listened to while in the blue state\n    transition1,\n    transition2\n}\nfunction Default:OnEnter(data)\n    data.part.Color = Color3.fromRGB(0, 166, 255) --This will turn the part Blue when it enters the state blue\nend\n\nreturn Default\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;stateName&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;string?&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;State&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 42,
+                &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;ChangeState&quot;,
+            &quot;desc&quot;: &quot;Forcelly changes the current state of our state machine to a new one&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;newState&quot;,
+                    &quot;desc&quot;: &quot;The name of the new state&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;()&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 58,
+                &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
+            }
+        },
+        {
             &quot;name&quot;: &quot;OnInit&quot;,
-            &quot;desc&quot;: &quot;[Virtual method]\n\nCalled whenever a state machine is created with this state&quot;,
+            &quot;desc&quot;: &quot;:::info\nThis is a **Virtual Method**. Virtual Methods are meant to be overwritten\n:::\n\nCalled whenever a state machine is created with this state.\n\n```lua\nfunction State:OnInit(data)\n    print(\&quot;I was init!\&quot;)\n    self.SomeStartingData = tick()\nend\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;data&quot;,
-                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;desc&quot;: &quot;This is the data from the StateMachine itself!&quot;,
                     &quot;lua_type&quot;: &quot;{[string]: any}&quot;
                 }
             ],
-            &quot;returns&quot;: [],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;()&quot;
+                }
+            ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 28,
+                &quot;line&quot;: 84,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;OnEnter&quot;,
-            &quot;desc&quot;: &quot;[Virtual method]\n\nCalled whenever you enter this state&quot;,
+            &quot;desc&quot;: &quot;:::info\nThis is a **Virtual Method**. Virtual Methods are meant to be overwritten\n:::\n\nCalled whenever you enter this state\n\n```lua\nfunction State:OnEnter(data)\n    data.part.Color = Color3.fromRGB(0, 166, 255)\nend\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;data&quot;,
-                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;desc&quot;: &quot;This is the data from the StateMachine itself!&quot;,
                     &quot;lua_type&quot;: &quot;{[string]: any}&quot;
                 }
             ],
-            &quot;returns&quot;: [],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;()&quot;
+                }
+            ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 37,
+                &quot;line&quot;: 105,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;OnHearBeat&quot;,
-            &quot;desc&quot;: &quot;[Virtual method]\n\nCalled every frame after the physics simulation while in this state&quot;,
+            &quot;desc&quot;: &quot;:::info\nThis is a **Virtual Method**. Virtual Methods are meant to be overwritten\n:::\n\nCalled every frame after the physics simulation while in this state\n\n```lua\nfunction Default:OnHearBeat(data, deltaTime: number)\n    self.timePassed += deltaTime\nend\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;data&quot;,
-                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;desc&quot;: &quot;This is the data from the StateMachine itself!&quot;,
                     &quot;lua_type&quot;: &quot;{[string]: any}&quot;
                 },
                 {
@@ -79,27 +220,37 @@ how it should behave when it enters, is and leaves the given state"><link data-r
                     &quot;lua_type&quot;: &quot;number&quot;
                 }
             ],
-            &quot;returns&quot;: [],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;()&quot;
+                }
+            ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 46,
+                &quot;line&quot;: 127,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;OnLeave&quot;,
-            &quot;desc&quot;: &quot;[Virtual method]\n\nCalled whenever you leave this state&quot;,
+            &quot;desc&quot;: &quot;:::info\nThis is a **Virtual Method**. Virtual Methods are meant to be overwritten\n:::\n\nCalled whenever you leave this state\n\n```lua\nfunction State:OnLeave(data)\n    data.stuff:Clean()\nend\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;data&quot;,
-                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;desc&quot;: &quot;This is the data from the StateMachine itself!&quot;,
                     &quot;lua_type&quot;: &quot;{[string]: any}&quot;
                 }
             ],
-            &quot;returns&quot;: [],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;()&quot;
+                }
+            ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 55,
+                &quot;line&quot;: 148,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         }
@@ -112,8 +263,8 @@ how it should behave when it enters, is and leaves the given state"><link data-r
         &quot;line&quot;: 9,
         &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#OnEnter" class="table-of-contents__link toc-highlight">:OnEnter</a></li><li><a href="#OnHearBeat" class="table-of-contents__link toc-highlight">:OnHearBeat</a></li><li><a href="#OnInit" class="table-of-contents__link toc-highlight">:OnInit</a></li><li><a href="#OnLeave" class="table-of-contents__link toc-highlight">:OnLeave</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 prooheckcp. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/RobloxStateMachines/assets/js/runtime~main.7744e7dd.js"></script>
-<script src="/RobloxStateMachines/assets/js/main.1eda0274.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#ChangeState" class="table-of-contents__link toc-highlight">:ChangeState</a></li><li><a href="#OnEnter" class="table-of-contents__link toc-highlight">:OnEnter</a></li><li><a href="#OnHearBeat" class="table-of-contents__link toc-highlight">:OnHearBeat</a></li><li><a href="#OnInit" class="table-of-contents__link toc-highlight">:OnInit</a></li><li><a href="#OnLeave" class="table-of-contents__link toc-highlight">:OnLeave</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 prooheckcp. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/RobloxStateMachine/assets/js/runtime~main.f1a3205f.js"></script>
+<script src="/RobloxStateMachine/assets/js/main.0d56752b.js"></script>
 </body>
 </html>
