@@ -40,7 +40,7 @@ So we want two states: Blue and Red. We also want to make 2 transitions that wil
 
 ### C. Create a Part and call it "myPart"
 We will be creating a part in the workspace and use it as an example to how we can make/use the StateMachine
-
+![](https://cdn.discordapp.com/attachments/670023265455964198/1105654243802755132/Screenshot_2023-05-10_at_01.34.58.png)
 
 ## 2. States
 Now that we organised our files let's setup the states first! We will start by making a simple state template inside of the Blue file!
@@ -86,4 +86,19 @@ This will turn our part blue when it enters the blue state! Are you confused abo
 
 ## 3. Create State Machine
 Now that we have 1 state we can already make our state machine! Don't worry, we will be covering transitions and making our red state next! Now in a server or local script create a state machine with the following code...
+```lua
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
+local RobloxStateMachine = require(ReplicatedStorage.RobloxStateMachine)
+
+local states = ReplicatedStorage.States -- Reference to our states folder
+
+local stateMachine = RobloxStateMachine.new("Blue", -- This is the initial state of our machine
+	{
+		require(states.Blue) -- This is an array of our states
+	},
+	{
+		part = workspace.myPart -- This is the data that our transitions and states will have access to
+	}
+)
+```
