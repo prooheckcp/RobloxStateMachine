@@ -7,7 +7,7 @@ local GoToBlue = Transition.new("Blue")
 GoToBlue.OnHearbeat = false
 
 function GoToBlue:OnDataChanged(data)
-    return tick() - data.time > 10 -- Will change to blue after 10 seconds 
+    return false
 end
 
 return GoToBlue

@@ -61,7 +61,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
             self:ChangeState(newState)
         end
 
-        stateClone:OnInit(self._CustomData)
+        task.spawn(stateClone.OnInit, stateClone, self._CustomData)
         self._States[state.Name] = stateClone
     end
 
@@ -74,7 +74,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
             return
         end
 
-        state:OnHearBeat(self._CustomData, deltaTime)
+        task.spawn(state:OnHearBeat(self._CustomData, deltaTime)
     end)
 
     self:_ChangeState(initialState)
