@@ -238,7 +238,7 @@ Had problems during the tutorial? Check the copy unlocked place here:
 https://www.roblox.com/games/13401789032/RobloxStateMachine-Copy-Unlocked
 
 # ⭐ Contributing
-Please leave a star on [GitHub](https://github.com/prooheckcp/RobloxStateMachines), it helps a lot!
+Please leave a star on [GitHub](https://github.com/prooheckcp/RobloxStateMachine), it helps a lot!
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
