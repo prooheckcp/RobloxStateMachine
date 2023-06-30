@@ -1,5 +1,5 @@
 [package]
-name = "prooheckcp/robloxstatemachines"
+name = "prooheckcp/robloxstatemachine"
 description = "This is a State Machine implementation for Roblox. It allows you to easily create states and transitions to move in-between them. You can read it's documentation at: https://github.com/prooheckcp/RobloxStateMachines"
 version = "0.1.0"
 license = "MIT"
@@ -12,5 +12,7 @@ include = [
     "src/StateMachine", 
     "wally.lock", 
     "wally.toml",
-    "src/StateMachine/*"
+    "src/StateMachine/*",
+    "src",
+    "src/*"
 ]
