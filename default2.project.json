@@ -7,7 +7,7 @@
       "Shared": {
         "$path": "src/shared"
       },
-      "StateMachine": {
+      "RobloxStateMachine": {
         "$path": "src/StateMachine"
       }
     },
