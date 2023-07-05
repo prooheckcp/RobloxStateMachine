@@ -114,7 +114,7 @@ end
     Called every frame after the physics simulation while in this state
 
     ```lua
-    function Default:OnHearBeat(data, deltaTime: number)
+    function Default:OnHeartbeat(data, deltaTime: number)
         self.timePassed += deltaTime
     end
     ```
@@ -124,7 +124,7 @@ end
 
     @return ()
 ]=]
-function State:OnHearBeat(data: {[string]: any}, deltaTime: number): ()
+function State:OnHeartbeat(data: {[string]: any}, deltaTime: number): ()
     assert(data and deltaTime)
 end
 
