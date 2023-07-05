@@ -6,8 +6,8 @@
 <title data-rh="true">State | RobloxStateMachine</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://prooheckcp.github.io/RobloxStateMachine/api/State"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="State | RobloxStateMachine"><meta data-rh="true" name="description" content="Describes one of the many states an object can have. It also declares
 how it should behave when it enters, is and leaves the given state"><meta data-rh="true" property="og:description" content="Describes one of the many states an object can have. It also declares
 how it should behave when it enters, is and leaves the given state"><link data-rh="true" rel="canonical" href="https://prooheckcp.github.io/RobloxStateMachine/api/State"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachine/api/State" hreflang="en"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachine/api/State" hreflang="x-default"><link rel="stylesheet" href="/RobloxStateMachine/assets/css/styles.19a5646f.css">
-<link rel="preload" href="/RobloxStateMachine/assets/js/runtime~main.427ebcc4.js" as="script">
-<link rel="preload" href="/RobloxStateMachine/assets/js/main.a22987f3.js" as="script">
+<link rel="preload" href="/RobloxStateMachine/assets/js/runtime~main.a1131a7f.js" as="script">
+<link rel="preload" href="/RobloxStateMachine/assets/js/main.e7efb76a.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -79,7 +79,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
     data<span class="token punctuation">.</span>part<span class="token punctuation">.</span>Color <span class="token operator">=</span> Color3<span class="token punctuation">.</span><span class="token function">fromRGB</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">166</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span>
 <span class="token keyword">end</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnHearBeat"><code style="text-decoration:none">OnHearBeat</code><a href="#OnHearBeat" class="hash-link" aria-label="Direct link to OnHearBeat" title="Direct link to OnHearBeat">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L127"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnHearBeat</code><code>(</code><div class="inset_uKQm"><div><code>data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnHeartbeat"><code style="text-decoration:none">OnHeartbeat</code><a href="#OnHeartbeat" class="hash-link" aria-label="Direct link to OnHeartbeat" title="Direct link to OnHeartbeat">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L127"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnHeartbeat</code><code>(</code><div class="inset_uKQm"><div><code>data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>This is the data from the StateMachine itself!</p>
 </span></span></div><div><code>deltaTime<!-- -->: </code><code class="blue_P4bS">number</code></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
 <div class="admonition admonition-info alert alert--info">
@@ -93,7 +93,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
   </div>
 </div>
 <p>Called every frame after the physics simulation while in this state</p>
-<pre class="language-lua"><code class="language-lua"><span class="token keyword">function</span> Default<span class="token punctuation">:</span><span class="token function">OnHearBeat</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> deltaTime<span class="token punctuation">:</span> number<span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">function</span> Default<span class="token punctuation">:</span><span class="token function">OnHeartbeat</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> deltaTime<span class="token punctuation">:</span> number<span class="token punctuation">)</span>
     self<span class="token punctuation">.</span>timePassed <span class="token operator">+</span><span class="token operator">=</span> deltaTime
 <span class="token keyword">end</span>
 </code></pre>
@@ -206,8 +206,8 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
             }
         },
         {
-            &quot;name&quot;: &quot;OnHearBeat&quot;,
-            &quot;desc&quot;: &quot;:::info\nThis is a **Virtual Method**. Virtual Methods are meant to be overwritten\n:::\n\nCalled every frame after the physics simulation while in this state\n\n```lua\nfunction Default:OnHearBeat(data, deltaTime: number)\n    self.timePassed += deltaTime\nend\n```&quot;,
+            &quot;name&quot;: &quot;OnHeartbeat&quot;,
+            &quot;desc&quot;: &quot;:::info\nThis is a **Virtual Method**. Virtual Methods are meant to be overwritten\n:::\n\nCalled every frame after the physics simulation while in this state\n\n```lua\nfunction Default:OnHeartbeat(data, deltaTime: number)\n    self.timePassed += deltaTime\nend\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;data&quot;,
@@ -263,8 +263,8 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
         &quot;line&quot;: 9,
         &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#ChangeState" class="table-of-contents__link toc-highlight">:ChangeState</a></li><li><a href="#OnEnter" class="table-of-contents__link toc-highlight">:OnEnter</a></li><li><a href="#OnHearBeat" class="table-of-contents__link toc-highlight">:OnHearBeat</a></li><li><a href="#OnInit" class="table-of-contents__link toc-highlight">:OnInit</a></li><li><a href="#OnLeave" class="table-of-contents__link toc-highlight">:OnLeave</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 prooheckcp. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/RobloxStateMachine/assets/js/runtime~main.427ebcc4.js"></script>
-<script src="/RobloxStateMachine/assets/js/main.a22987f3.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#ChangeState" class="table-of-contents__link toc-highlight">:ChangeState</a></li><li><a href="#OnEnter" class="table-of-contents__link toc-highlight">:OnEnter</a></li><li><a href="#OnHeartbeat" class="table-of-contents__link toc-highlight">:OnHeartbeat</a></li><li><a href="#OnInit" class="table-of-contents__link toc-highlight">:OnInit</a></li><li><a href="#OnLeave" class="table-of-contents__link toc-highlight">:OnLeave</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 prooheckcp. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/RobloxStateMachine/assets/js/runtime~main.a1131a7f.js"></script>
+<script src="/RobloxStateMachine/assets/js/main.e7efb76a.js"></script>
 </body>
 </html>
