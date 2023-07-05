@@ -76,7 +76,7 @@ function Blue:OnEnter(data)
 	data.part.Color = Color3.fromRGB(0, 0, 255) -- Change color to blue!
 end
 
-function Blue:OnHearBeat()
+function Blue:OnHeartbeat()
 
 end
 
@@ -127,7 +127,7 @@ function Blue:OnEnter(data)
 	data.part.Color = Color3.fromRGB(0, 0, 255) -- Change color to blue!
 end
 
-function Blue:OnHearBeat(data, deltatime) -- All functions receive data as the first parameter
+function Blue:OnHeartbeat(data, deltatime) -- All functions receive data as the first parameter
 	data.timer += deltatime
 end
 
@@ -156,7 +156,7 @@ function Red:OnEnter(data)
 	data.part.Color = Color3.fromRGB(255, 0, 0) -- Change color to red!
 end
 
-function Red:OnHearBeat(data, deltatime) -- All functions receive data as the first parameter
+function Red:OnHeartbeat(data, deltatime) -- All functions receive data as the first parameter
 	data.timer += deltatime
 end
 

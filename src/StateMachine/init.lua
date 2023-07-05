@@ -70,11 +70,11 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         
         local state: State.State? = self:_GetCurrentStateObject()
         
-        if not state or getmetatable(state).OnHearBeat == state.OnHearBeat then
+        if not state or getmetatable(state).OnHeartbeat == state.OnHeartbeat then
             return
         end
 
-        task.spawn(state.OnHearBeat, state, self._CustomData, deltaTime)
+        task.spawn(state.OnHeartbeat, state, self._CustomData, deltaTime)
     end)
 
     self:_ChangeState(initialState)
@@ -256,7 +256,7 @@ end
 ]=]
 function StateMachine:_CheckTransitions(fromHeartbeat: boolean): ()
     for _, transition: Transition.Transition in self:_GetCurrentStateObject().Transitions do
-        if fromHeartbeat and not transition.OnHearbeat then
+        if fromHeartbeat and not transition.OnHeartbeat then
             continue
         end
 
