@@ -17,10 +17,11 @@ local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same n
 ]=]
 local StateMachine = {}
 StateMachine.__index = StateMachine
+StateMachine.Data = {} :: {[string]: any}
 StateMachine.StateChanged = nil :: Signal.Signal<string>?
 StateMachine.State = State
 StateMachine.Transition = Transition
-
+StateMachine._States = {} :: {[string]: State.State}
 --[=[
     Used to create a new State Machine. It expects 3 arguments being the third one an optional one
 
@@ -47,15 +48,10 @@ StateMachine.Transition = Transition
 ]=]
 function StateMachine.new(initialState: string, states: {State.State}, initialData: {[string]: any}?): RobloxStateMachine
     local self = setmetatable({}, StateMachine)
-    
-    local proxyTable = ProxyMetatable(initialData or {})
-    proxyTable:ListenToDataChange(function(...)
-        print("Data Changed: ", ...)
-    end)
 
-    self._CustomData = initialData or {} :: {[string]: any}
-    self._States = {} :: {[string]: State.State}
+    self.Data = ProxyMetatable(initialData or {}) :: {[string]: any}
     self.StateChanged = Signal.new() :: Signal.Signal<string>
+    self._States = {} :: {[string]: State.State}
 
     for _, state: State.State in states do -- Load the states
         if self._States[state.Name] then
@@ -63,7 +59,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         end
 
         local stateClone: State.State = Copy(state)
-        stateClone.Data = proxyTable
+        stateClone.Data = self.Data
         stateClone._changeState = function(newState: string)
             self:ChangeState(newState)
         end
