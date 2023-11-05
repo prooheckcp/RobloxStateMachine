@@ -8,13 +8,16 @@ local exampleStateMachine: RobloxStateMachine.RobloxStateMachine = RobloxStateMa
     {
         part = workspace.Example,
         time = tick(),
+        dummyData = "Hello World",
     }
 )
 
+--[[
 exampleStateMachine.StateChanged:Connect(function(newState: string)
     print("Changed the State to: ", newState)
 end)
 
 task.wait(3)
 
-exampleStateMachine:ChangeState("Blue")
+exampleStateMachine:ChangeState("Blue")    
+]]

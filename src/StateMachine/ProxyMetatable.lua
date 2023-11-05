@@ -14,7 +14,7 @@ function createProxyMetatable(baseTable: {[string]: any}?): ProxyMetatable
 		__newindex = function(tab, key, value)
 			local oldValue = data[key]
 			data[key] = value
-
+            print("Got this far?", tab._callbacks)
             task.spawn(function()
                 for callback in tab._callbacks do
                     callback(key, value, oldValue)

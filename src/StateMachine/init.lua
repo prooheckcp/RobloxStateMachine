@@ -4,6 +4,7 @@ local State = require(script.State)
 local Transition = require(script.Transition)
 local Signal = require(script.Signal)
 local Copy = require(script.Copy)
+local ProxyMetatable = require(script.ProxyMetatable)
 
 local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same name"
 
@@ -47,6 +48,11 @@ StateMachine.Transition = Transition
 function StateMachine.new(initialState: string, states: {State.State}, initialData: {[string]: any}?): RobloxStateMachine
     local self = setmetatable({}, StateMachine)
     
+    local proxyTable = ProxyMetatable(initialData or {})
+    proxyTable:ListenToDataChange(function(...)
+        print("Data Changed: ", ...)
+    end)
+
     self._CustomData = initialData or {} :: {[string]: any}
     self._States = {} :: {[string]: State.State}
     self.StateChanged = Signal.new() :: Signal.Signal<string>
@@ -57,6 +63,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         end
 
         local stateClone: State.State = Copy(state)
+        stateClone.Data = proxyTable
         stateClone._changeState = function(newState: string)
             self:ChangeState(newState)
         end
