@@ -4,7 +4,7 @@ local RobloxStateMachine = require(ReplicatedStorage.RobloxStateMachine)
 
 local exampleStateMachine: RobloxStateMachine.RobloxStateMachine = RobloxStateMachine.new(
     "Default",
-    RobloxStateMachine:LoadDirectory(script.Example.States), 
+    RobloxStateMachine:LoadDirectory(script.Example.States, {"Blue", "Default"}), 
     {
         part = workspace.Example,
         time = tick(),

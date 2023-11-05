@@ -5,6 +5,7 @@
 ]=]
 local Transition = {}
 Transition.Type = "Transition"
+Transition.Name = "" :: string
 Transition.__index = Transition
 Transition.TargetState = "" :: string
 Transition._changeState = nil :: (newState: string)->()?

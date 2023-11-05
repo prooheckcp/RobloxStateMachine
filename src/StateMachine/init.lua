@@ -14,6 +14,9 @@ local DATA_WARNING: string = "[Warning]: The data of this state machine is not a
 local STATE_NOT_FOUND: string = "Attempt to %s, but there is no state by the name of %s"
 local WRONG_TRANSITION: string = "Attempt to add a transition that is not a transition"
 
+-- Used for quicker access to the directories
+local cacheDirectories = {} :: {[Instance]: {any}}
+
 --[=[
     @class StateMachine
 
@@ -173,35 +176,59 @@ end
     )
     ```
 
+    You can also use it to load specific files by feeding the names you wish to load
+
+
     @param directory Instance
+    @names {string}? -- If you wish to only load specific states you can pass an array of names
 
     @return {any}
 ]=]
-function StateMachine:LoadDirectory(directory: Instance): {any}
-    local loadedFiles = {}
+function StateMachine:LoadDirectory(directory: Instance, names: {string}?): {any}
+    if not cacheDirectories[directory] then
+        cacheDirectories[directory] = {}
 
-    for _, child: Instance in directory:GetDescendants() do
-        if not child:IsA("ModuleScript") then
-            continue
-        end
-        
-        local success: boolean, result: any = pcall(function()
-            return require(child)
-        end)
+        for _, child: Instance in directory:GetDescendants() do
+            if not child:IsA("ModuleScript") then
+                continue
+            end
+            
+            local success: boolean, result: any = pcall(function()
+                return require(child)
+            end)
 
-        if 
-            not success or
-            typeof(result) ~= "table"
-        then
-            continue
-        end
+            if 
+                not success or
+                typeof(result) ~= "table"
+            then
+                continue
+            end
 
-        if result.Type == State.Type then
-            table.insert(loadedFiles, result)
+            if result.Type ~= State.Type and result.Type ~= Transition.Type  then
+                continue
+            end
+
+            if not result.Name or result.Name == "" then
+                result.Name = child.Name
+            end
+            
+            table.insert(cacheDirectories[directory], result)
         end
     end
 
-    return loadedFiles
+    if not names then
+        return cacheDirectories[directory]
+    end
+
+    local filteredFiles = {}
+
+    for _, file in cacheDirectories[directory] do
+        if table.find(names, file.Name) then
+            table.insert(filteredFiles, file)
+        end
+    end
+
+    return filteredFiles
 end
 
 --[=[
