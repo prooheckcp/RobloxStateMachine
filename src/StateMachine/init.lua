@@ -66,7 +66,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
     end
 
     self.heartBeat = RunService.Heartbeat:Connect(function(deltaTime: number)
-        self:_CheckTransitions(true)
+        self:_CheckTransitions()
         
         local state: State.State? = self:_GetCurrentStateObject()
         
@@ -112,8 +112,6 @@ function StateMachine:ChangeData(index: string, newValue: any): ()
     end
 
     self._CustomData[index] = newValue
-
-    self:_CheckTransitions(false)
 end
 
 --[=[
@@ -254,12 +252,8 @@ end
 
     @return ()
 ]=]
-function StateMachine:_CheckTransitions(fromHeartbeat: boolean): ()
+function StateMachine:_CheckTransitions(): ()
     for _, transition: Transition.Transition in self:_GetCurrentStateObject().Transitions do
-        if fromHeartbeat and not transition.OnHearbeat then
-            continue
-        end
-
         if transition:CanChangeState(self._CustomData) and transition:OnDataChanged(self._CustomData) then
             self:_ChangeState(transition.TargetState)
             break

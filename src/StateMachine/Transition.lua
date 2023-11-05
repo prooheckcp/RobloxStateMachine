@@ -6,7 +6,6 @@
 local Transition = {}
 Transition.__index = Transition
 Transition.TargetState = "" :: string
-Transition.OnHearbeat = true :: boolean -- If it should be checked every frame
 
 --[=[
     Creates a new transition. Transitions are used to tell our state

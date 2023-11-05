@@ -10,6 +10,7 @@ local State = {}
 State.__index = State
 State.Name = "" :: string
 State.Transitions = {} :: {Transition.Transition}
+State.Data = {} :: {[string]: any}
 State._changeState = nil :: (newState: string)->()?
 
 --[=[
