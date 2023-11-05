@@ -20,7 +20,7 @@ function createProxyMetatable(baseTable: {[string]: any}?): ProxyMetatable
 
             task.spawn(function()
                 for callback in callbacks do
-                    callback(key, value, oldValue)
+                    task.spawn(callback, key, value, oldValue)
                 end
             end)
 		end,
