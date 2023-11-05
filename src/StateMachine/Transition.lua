@@ -4,6 +4,7 @@
     Dictates how and when should you move between different states
 ]=]
 local Transition = {}
+Transition.Type = "Transition"
 Transition.__index = Transition
 Transition.TargetState = "" :: string
 

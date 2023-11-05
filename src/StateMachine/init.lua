@@ -7,6 +7,7 @@ local Copy = require(script.Copy)
 local ProxyMetatable = require(script.ProxyMetatable)
 
 local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same name"
+local DATA_WARNING: string = "[Warning]: The data of this state machine is not a table. It will be converted to a table. Please do not set data to a non table object"
 
 --[=[
     @class StateMachine
@@ -129,7 +130,12 @@ end
     @return {[string]: any}
 ]=]
 function StateMachine:GetData(): {[string]: any}
-    return self._CustomData
+    if typeof(self.Data) ~= "table" then
+        warn(DATA_WARNING)
+        self.Data = {}
+    end
+
+    return self.Data
 end
 
 --[=[
@@ -188,7 +194,7 @@ function StateMachine:Destroy(): ()
     local state: State.State? = self:_GetCurrentStateObject()
 
     if state then
-        state:OnLeave(self._CustomData)
+        state:OnLeave(self.Data)
     end
 
     if self.heartBeat then
@@ -226,10 +232,10 @@ function StateMachine:_ChangeState(newState: string): ()
     end
 
     if previousState then
-        task.spawn(previousState.OnLeave, previousState, self._CustomData)
+        task.spawn(previousState.OnLeave, previousState, self:GetData())
     end
 
-    task.spawn(state.OnEnter, state, self._CustomData)
+    task.spawn(state.OnEnter, state, self:GetData())
     self._CurrentState = newState
     self.StateChanged:Fire(newState)
 end
@@ -257,7 +263,7 @@ end
 ]=]
 function StateMachine:_CheckTransitions(): ()
     for _, transition: Transition.Transition in self:_GetCurrentStateObject().Transitions do
-        if transition:CanChangeState(self._CustomData) and transition:OnDataChanged(self._CustomData) then
+        if transition:CanChangeState(self:GetData()) and transition:OnDataChanged(self:GetData()) then
             self:_ChangeState(transition.TargetState)
             break
         end
