@@ -7,6 +7,7 @@ local Transition = {}
 Transition.Type = "Transition"
 Transition.__index = Transition
 Transition.TargetState = "" :: string
+Transition._changeState = nil :: (newState: string)->()?
 
 --[=[
     Creates a new transition. Transitions are used to tell our state
@@ -55,6 +56,21 @@ end
 function Transition:CanChangeState(data: {[string]: any}): boolean
     assert(data)
     return true
+end
+
+--[=[
+    Forcelly changes the current state of our state machine to a new one
+
+    @param newState string -- The name of the new state
+
+    @return ()
+]=]
+function Transition:ChangeState(newState: string): ()
+    if not self._changeState then
+        return
+    end
+
+    self._changeState(newState)
 end
 
 --[=[

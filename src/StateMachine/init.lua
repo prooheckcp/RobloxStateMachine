@@ -12,6 +12,7 @@ type Trove = Trove.Trove
 local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same name"
 local DATA_WARNING: string = "[Warning]: The data of this state machine is not a table. It will be converted to a table. Please do not set data to a non table object"
 local STATE_NOT_FOUND: string = "Attempt to %s, but there is no state by the name of %s"
+local WRONG_TRANSITION: string = "Attempt to add a transition that is not a transition"
 
 --[=[
     @class StateMachine
@@ -69,6 +70,16 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         stateClone.Data = self.Data
         stateClone._changeState = function(newState: string)
             self:ChangeState(newState)
+        end
+
+        for _, transition in stateClone.Transitions do
+            if transition.Type ~= Transition.Type then
+                error(WRONG_TRANSITION, 2)
+            end
+
+            transition._changeState = function(newState: string)
+                self:ChangeState(newState)
+            end
         end
 
         self._trove:Add(self.Data:ListenToDataChange(function(...)
