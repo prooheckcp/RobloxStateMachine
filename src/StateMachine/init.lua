@@ -159,7 +159,7 @@ end
 function StateMachine:LoadDirectory(directory: Instance): {any}
     local loadedFiles = {}
 
-    for _, child: Instance in directory:GetChildren() do
+    for _, child: Instance in directory:GetDescendants() do
         if not child:IsA("ModuleScript") then
             continue
         end
@@ -168,7 +168,14 @@ function StateMachine:LoadDirectory(directory: Instance): {any}
             return require(child)
         end)
 
-        if success then
+        if 
+            not success or
+            typeof(result) ~= "table"
+        then
+            continue
+        end
+
+        if result.Type == State.Type then
             table.insert(loadedFiles, result)
         end
     end
