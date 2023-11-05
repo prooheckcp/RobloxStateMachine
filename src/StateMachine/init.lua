@@ -190,7 +190,7 @@ end
 
 
     @param directory Instance
-    @names {string}? -- If you wish to only load specific states you can pass an array of names
+    @param names {string}? -- If you wish to only load specific states you can pass an array of names
 
     @return {any}
 ]=]
