@@ -8,6 +8,7 @@ local ProxyMetatable = require(script.ProxyMetatable)
 
 local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same name"
 local DATA_WARNING: string = "[Warning]: The data of this state machine is not a table. It will be converted to a table. Please do not set data to a non table object"
+local STATE_NOT_FOUND: string = "Attempt to %s, but there is no state by the name of %s"
 
 --[=[
     @class StateMachine
@@ -222,6 +223,19 @@ function StateMachine:ChangeState(newState: string): ()
 end
 
 --[=[
+    Checks if the state exists
+
+    @private
+
+    @param stateName string
+
+    @return boolean
+]=]
+function StateMachine:_StateExists(stateName: string): boolean
+    return self._States[stateName] ~= nil
+end
+
+--[=[
     Called to change the current state of the state machine
 
     @private
@@ -231,6 +245,11 @@ end
     @return ()
 ]=]
 function StateMachine:_ChangeState(newState: string): ()
+    if not self:_StateExists(newState) then
+        warn(STATE_NOT_FOUND:format(`change to {newState}`, newState))
+        return
+    end
+
     local previousState: State.State? = self:_GetCurrentStateObject()
     local state: State.State? = self._States[newState]
 

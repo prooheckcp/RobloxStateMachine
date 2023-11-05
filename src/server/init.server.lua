@@ -14,4 +14,4 @@ local exampleStateMachine: RobloxStateMachine.RobloxStateMachine = RobloxStateMa
 
 task.wait(2)
 
-exampleStateMachine:ChangeState("Blue")    
+exampleStateMachine:ChangeState("RandomIndex")    
