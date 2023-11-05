@@ -8,10 +8,6 @@ local State = StateMachine.State
 
 local Default: State = State.new("Blue")
 
-function Default:()
-    
-end
-
 function Default:OnInit(data)
     
 end
