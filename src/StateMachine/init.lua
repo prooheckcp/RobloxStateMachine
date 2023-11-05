@@ -286,8 +286,6 @@ end
 
     @private
 
-    @param fromHeartbeat boolean
-
     @return ()
 ]=]
 function StateMachine:_CheckTransitions(): ()
