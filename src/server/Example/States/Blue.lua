@@ -1,12 +1,23 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local StateMachine = require(ReplicatedStorage.RobloxStateMachine)
+
+type State = StateMachine.State
+
 local State = StateMachine.State
 
-local Default = State.new("Blue")
+local Default: State = State.new("Blue")
+
+function Default:()
+    
+end
 
 function Default:OnInit(data)
     
+end
+
+function Default:OnDataChanged(...)
+    print("Data Changed!", ...)
 end
 
 function Default:OnHeartbeat(data)

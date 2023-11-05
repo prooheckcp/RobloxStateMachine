@@ -74,6 +74,6 @@ function Transition:OnDataChanged(data: {[string]: any}): boolean
     return false
 end
 
-export type Transition = typeof(Transition)
+export type Transition = typeof(Transition.new(...))
 
 return Transition
