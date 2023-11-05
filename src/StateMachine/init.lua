@@ -28,6 +28,7 @@ local StateMachine = {}
 StateMachine.__index = StateMachine
 StateMachine.Data = {} :: {[string]: any}
 StateMachine.StateChanged = nil :: Signal.Signal<string>?
+StateMachine.DataChanged = nil :: Signal.Signal<string, any, any>?
 StateMachine.State = State
 StateMachine.Transition = Transition
 StateMachine._States = {} :: {[string]: State.State}
@@ -59,10 +60,12 @@ StateMachine._trove = nil :: Trove
 function StateMachine.new(initialState: string, states: {State.State}, initialData: {[string]: any}?): RobloxStateMachine
     local self = setmetatable({}, StateMachine)
 
-    self.Data = ProxyMetatable(initialData or {}) :: {[string]: any}
-    self.StateChanged = Signal.new() :: Signal.Signal<string>
     self._States = {} :: {[string]: State.State}
     self._trove = Trove.new()
+    
+    self.Data = ProxyMetatable(initialData or {}) :: {[string]: any}
+    self.StateChanged = Signal.new() :: Signal.Signal<string>
+    self.DataChanged = Signal.new() :: Signal.Signal<string, any, any>
 
     for _, state: State.State in states do -- Load the states
         if self._States[state.Name] then
@@ -104,6 +107,13 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
 
         task.spawn(state.OnHearBeat, state, self._CustomData, deltaTime)
     end))
+
+    self._trove:Add(self.Data:ListenToDataChange(function(...)
+        self.DataChanged:Fire(...)
+    end))
+
+    self._trove:Add(self.StateChanged)
+    self._trove:Add(self.DataChanged)
 
     self:_ChangeState(initialState)
 
