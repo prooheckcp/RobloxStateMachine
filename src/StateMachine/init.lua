@@ -66,6 +66,10 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
             self:ChangeState(newState)
         end
 
+        self.Data:ListenToDataChange(function(...)
+            state:OnDataChanged(...)
+        end)
+
         task.spawn(stateClone.OnInit, stateClone, self.Data)
         self._States[state.Name] = stateClone
     end
