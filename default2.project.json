@@ -4,9 +4,6 @@
     "$className": "DataModel",
 
     "ReplicatedStorage": {
-      "Shared": {
-        "$path": "src/shared"
-      },
       "RobloxStateMachine": {
         "$path": "src/StateMachine"
       }
