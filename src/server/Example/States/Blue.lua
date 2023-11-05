@@ -16,9 +16,8 @@ end
 function Default:OnEnter(data)
     data.part.Color = Color3.fromRGB(0, 166, 255)
 
-    task.wait(1)
-
-    self.Data = "Goodbye World"
+    self.Data.dummyData = "Goodbye World"
+    self.Data.dummyData = "Goodbye World"
 end
 
 return Default

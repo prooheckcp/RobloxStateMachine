@@ -4,19 +4,22 @@
 ]]
 function createProxyMetatable(baseTable: {[string]: any}?): ProxyMetatable
 	local data = baseTable or {}
+    local callbacks = {} -- will get cleared when the proxy is destroyed
 
-	local proxy = setmetatable({
-        _callbacks = {},
-    }, {
+	local proxy = setmetatable({}, {
 		__index = function(_, key)
 			return data[key]
 		end,
-		__newindex = function(tab, key, value)
+		__newindex = function(_, key, value)
+            if data[key] == value then
+                return
+            end
+            
 			local oldValue = data[key]
 			data[key] = value
-            print("Got this far?", tab._callbacks)
+
             task.spawn(function()
-                for callback in tab._callbacks do
+                for callback in callbacks do
                     callback(key, value, oldValue)
                 end
             end)
@@ -28,10 +31,10 @@ function createProxyMetatable(baseTable: {[string]: any}?): ProxyMetatable
 	})
 
     function proxy:ListenToDataChange(callback: (key: any, newValue: any, oldValue: any) -> ()): (() -> ())
-        self._callbacks[callback] = true
-        
+        callbacks[callback] = true
+
         return function()
-            self._callbacks[callback] = nil
+            callbacks[callback] = nil
         end
     end
 
