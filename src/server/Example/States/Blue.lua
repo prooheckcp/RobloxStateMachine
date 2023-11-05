@@ -17,7 +17,8 @@ function Default:OnEnter(data)
     data.part.Color = Color3.fromRGB(0, 166, 255)
 
     self.Data.dummyData = "Goodbye World"
-    self.Data.dummyData = "Goodbye World"
+
+    print(data)
 end
 
 return Default

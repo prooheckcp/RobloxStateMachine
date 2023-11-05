@@ -66,7 +66,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
             self:ChangeState(newState)
         end
 
-        task.spawn(stateClone.OnInit, stateClone, self._CustomData)
+        task.spawn(stateClone.OnInit, stateClone, self.Data)
         self._States[state.Name] = stateClone
     end
 
@@ -245,10 +245,7 @@ end
     @return ()
 ]=]
 function StateMachine:_ChangeState(newState: string): ()
-    if not self:_StateExists(newState) then
-        warn(STATE_NOT_FOUND:format(`change to {newState}`, newState))
-        return
-    end
+    assert(self:_StateExists(newState), STATE_NOT_FOUND:format(`change to {newState}`, newState))
 
     local previousState: State.State? = self:_GetCurrentStateObject()
     local state: State.State? = self._States[newState]

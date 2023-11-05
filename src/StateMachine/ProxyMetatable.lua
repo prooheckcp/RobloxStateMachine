@@ -25,9 +25,9 @@ function createProxyMetatable(baseTable: {[string]: any}?): ProxyMetatable
             end)
 		end,
 		__tostring = function()
-			print(data)
+			print(data) -- TO DO CHECK
 			return ""
-		end,
+		end,            
 	})
 
     function proxy:ListenToDataChange(callback: (key: any, newValue: any, oldValue: any) -> ()): (() -> ())
