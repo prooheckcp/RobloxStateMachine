@@ -3,8 +3,11 @@ local RunService = game:GetService("RunService")
 local State = require(script.State)
 local Transition = require(script.Transition)
 local Signal = require(script.Signal)
+local Trove = require(script.Trove)
 local Copy = require(script.Copy)
 local ProxyMetatable = require(script.ProxyMetatable)
+
+type Trove = Trove.Trove
 
 local DUPLICATE_ERROR: string = "There cannot be more than 1 state by the same name"
 local DATA_WARNING: string = "[Warning]: The data of this state machine is not a table. It will be converted to a table. Please do not set data to a non table object"
@@ -24,6 +27,7 @@ StateMachine.StateChanged = nil :: Signal.Signal<string>?
 StateMachine.State = State
 StateMachine.Transition = Transition
 StateMachine._States = {} :: {[string]: State.State}
+StateMachine._trove = nil :: Trove
 --[=[
     Used to create a new State Machine. It expects 3 arguments being the third one an optional one
 
@@ -54,6 +58,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
     self.Data = ProxyMetatable(initialData or {}) :: {[string]: any}
     self.StateChanged = Signal.new() :: Signal.Signal<string>
     self._States = {} :: {[string]: State.State}
+    self._trove = Trove.new()
 
     for _, state: State.State in states do -- Load the states
         if self._States[state.Name] then
@@ -66,15 +71,15 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
             self:ChangeState(newState)
         end
 
-        self.Data:ListenToDataChange(function(...)
+        self._trove:Add(self.Data:ListenToDataChange(function(...)
             state:OnDataChanged(...)
-        end)
+        end))
 
         task.spawn(stateClone.OnInit, stateClone, self.Data)
         self._States[state.Name] = stateClone
     end
 
-    self.heartBeat = RunService.Heartbeat:Connect(function(deltaTime: number)
+    self._trove:Add(RunService.Heartbeat:Connect(function(deltaTime: number)
         self:_CheckTransitions()
         
         local state: State.State? = self:_GetCurrentStateObject()
@@ -84,7 +89,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
         end
 
         task.spawn(state.OnHearBeat, state, self._CustomData, deltaTime)
-    end)
+    end))
 
     self:_ChangeState(initialState)
 
@@ -206,13 +211,10 @@ function StateMachine:Destroy(): ()
     local state: State.State? = self:_GetCurrentStateObject()
 
     if state then
-        state:OnLeave(self.Data)
+        task.spawn(state.OnLeave, state, self:GetData())
     end
 
-    if self.heartBeat then
-        self.heartBeat:Disconnect()
-        self.heartBeat = nil
-    end
+    self._trove:Destroy()
 end
 
 --[=[

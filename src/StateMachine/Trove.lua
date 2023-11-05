@@ -379,4 +379,6 @@ function Trove:Destroy()
 	self:Clean()
 end
 
+export type Trove = typeof(Trove.new(...))
+
 return Trove
