@@ -25,8 +25,8 @@ function createProxyMetatable(baseTable: {[string]: any}?): ProxyMetatable
             end)
 		end,
 		__tostring = function()
-			print(data) -- TO DO CHECK
-			return ""
+			print(data)
+			return "⬆️"
 		end,            
 	})
 
