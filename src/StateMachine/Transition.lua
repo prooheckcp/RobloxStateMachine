@@ -4,10 +4,11 @@
     Dictates how and when should you move between different states
 ]=]
 local Transition = {}
+Transition.__index = Transition
 Transition.Type = "Transition"
 Transition.Name = "" :: string
-Transition.__index = Transition
 Transition.TargetState = "" :: string
+Transition.Data = {} :: {[string]: any}
 Transition._changeState = nil :: (newState: string)->()?
 
 --[=[
@@ -91,6 +92,6 @@ function Transition:OnDataChanged(data: {[string]: any}): boolean
     return false
 end
 
-export type Transition = typeof(Transition.new(...))
+export type Transition = typeof(Transition)
 
 return Transition

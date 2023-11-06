@@ -7,10 +7,11 @@ local Transition = require(script.Parent.Transition)
     how it should behave when it enters, is and leaves the given state
 ]=]
 local State = {}
+State.__index = State
 State.Type = "State"
 State.Name = "" :: string
-State.__index = State
 State.Transitions = {} :: {Transition.Transition}
+State._transitions = {} :: {[string]: Transition.Transition}
 State.Data = {} :: {[string]: any}
 State._changeState = nil :: (newState: string)->()?
 
@@ -180,6 +181,6 @@ function State:OnLeave(data: {[string]: any}): ()
     assert(data)
 end
 
-export type State = typeof(State.new(...))
+export type State = typeof(State)
 
 return State

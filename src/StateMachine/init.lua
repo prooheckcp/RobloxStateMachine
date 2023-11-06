@@ -1,3 +1,4 @@
+local HttpService = game:GetService("HttpService")
 local RunService = game:GetService("RunService")
 
 local State = require(script.State)
@@ -37,6 +38,8 @@ StateMachine.__index = StateMachine
     local stateMachine = RobloxStateMachine.new("state", states, {health = 0})
     stateMachine:GetData().health = 50
     ```
+
+    The data is shared accross all states and transitions. You can access it within transti
 ]=]
 StateMachine.Data = {} :: {[string]: any}
 --[=[
@@ -123,14 +126,27 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
             self:ChangeState(newState)
         end
 
-        for _, transition in stateClone.Transitions do
-            if transition.Type ~= Transition.Type then
+        state._transitions = {}
+
+        for _, transition: Transition in stateClone.Transitions do
+            if #transition.Name == 0 then
+                transition.Name = HttpService:GenerateGUID(false)
+            end
+
+            local transitionClone: Transition = Copy(transition)
+
+            if transitionClone.Type ~= Transition.Type then
                 error(WRONG_TRANSITION, 2)
             end
 
-            transition._changeState = function(newState: string)
+            transitionClone.Data = self.Data
+            transitionClone._changeState = function(newState: string)
                 self:ChangeState(newState)
             end
+
+            transitionClone.Data = self.Data
+
+            state._transitions[transitionClone.Name] = transitionClone
         end
 
         self._trove:Add(self.Data:ListenToDataChange(function(...)
