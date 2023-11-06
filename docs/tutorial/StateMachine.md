@@ -1,4 +1,12 @@
+---
+sidebar_position: 3
+sidebar_label: "🤖🔄 State Machine"
+---
+
+# 🤖🔄 State Machine
+
 Now that we have 1 state we can already make our state machine! Don't worry, we will be covering transitions and making our red state next! Now in a server or local script create a state machine with the following code...
+
 ```lua
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 

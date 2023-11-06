@@ -1,4 +1,10 @@
-## 4. Change Data from State
+---
+sidebar_position: 4
+sidebar_label: "📂 Sending Data"
+---
+
+# 📂 Sending Data
+
 Something that is very important is to change our State Machine data from within the state. Let's go into the blue state and add a timer, this will tell us how long since we have entered the blue state. It will later help us to transition between the 2 states after X amount of seconds!
 ```lua
 local ReplicatedStorage = game:GetService("ReplicatedStorage")

@@ -1,4 +1,9 @@
-## 6. Connecting Transitions
+---
+sidebar_position: 6
+sidebar_label: "🔚  Final Steps"
+---
+
+# 🔚  Final Steps
 Now that we have both our States and Transitions we should connect our transitions to the states! You can do this by going into the Red and Blue state and add a Transitions array with every transition you want. See the following examples
 ```lua
 --blue.lua

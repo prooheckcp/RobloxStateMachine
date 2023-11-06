@@ -15,3 +15,7 @@ local exampleStateMachine: RobloxStateMachine.RobloxStateMachine = RobloxStateMa
 task.wait(2)
 
 exampleStateMachine:ChangeState("Blue")
+
+task.wait(2)
+
+exampleStateMachine:Destroy()

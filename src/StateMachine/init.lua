@@ -345,7 +345,7 @@ function StateMachine:_CheckTransitions(): ()
     end    
 end
 
-export type RobloxStateMachine = typeof(StateMachine.new(...))
+export type RobloxStateMachine = typeof(StateMachine)
 export type State = State.State
 export type Transition = Transition.Transition
 

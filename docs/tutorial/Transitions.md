@@ -1,4 +1,9 @@
-## 5. Transitions
+---
+sidebar_position: 5
+sidebar_label: "🔀 Transitions"
+---
+
+# 🔀 Transitions
 Now that we finished our states we want to add the transitions to tell our state machine when should it change the state. Let's open the "ToRed" Lua file that we created early and write the following code:
 ```lua
 local ReplicatedStorage = game:GetService("ReplicatedStorage")

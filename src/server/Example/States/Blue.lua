@@ -28,4 +28,8 @@ function Default:OnEnter(data)
     print(data)
 end
 
+function Default:OnLeave()
+    print("Left state!")
+end
+
 return Default

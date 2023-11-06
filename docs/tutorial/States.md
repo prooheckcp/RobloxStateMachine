@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
-sidebar_label: "🔀  States"
+sidebar_label: "🔵  States"
 ---
 
-# 🔀 States
+# 🔵 States
 Now that we organized our files let's setup the states first! We will start by making a simple state template inside of the Blue file!
 
 ```lua
@@ -30,6 +30,7 @@ end
 
 function Blue:OnEnter(data) -- Called whenever the state changes into "Blue"
 	print("Blue Enter!")
+	-- Could also write: self.Data.part.Color
 	data.part.Color = Color3.fromRGB(0, 0, 255) -- Change color to blue!
 end
 
@@ -37,7 +38,7 @@ function Blue:OnHearBeat() -- Called every heartbeat
 
 end
 
-function Blue:OnLeave() -- Called whenever the state is left
+function Blue:OnLeave() -- Called whenever the state is left even if target gets destroyed
 	print("Blue Leave!")
 end
 
