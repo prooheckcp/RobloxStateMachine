@@ -26,13 +26,58 @@ local cacheDirectories = {} :: {[Instance]: {any}}
 ]=]
 local StateMachine = {}
 StateMachine.__index = StateMachine
+--[=[
+    @prop Data {[string]: any}
+    @within StateMachine
+
+    Contains the data that is shared accross all states and transitions of this state machine. Should be accessed with :GetData
+
+    E.g
+    ```lua
+    local stateMachine = RobloxStateMachine.new("state", states, {health = 0})
+    stateMachine:GetData().health = 50
+    ```
+]=]
 StateMachine.Data = {} :: {[string]: any}
-StateMachine.StateChanged = nil :: Signal.Signal<string>?
+--[=[
+    @prop StateChanged Signal<(string, string)>?
+    @within StateMachine
+
+    Called whenever the state of this state machinse changes. The first argument
+    is the new state and the second one is the previous state. If there was no previous state
+    then it will be an empty string
+
+    e.g
+    ```
+    exampleStateMachine.StateChanged:Connect(function(newState: string, previousState: string)
+        print("Our previous state was: " .. previousState .. " now our state is: " .. newState)
+    end)
+    ```
+]=]
+StateMachine.StateChanged = nil :: Signal.Signal<(string, string)>?
+--[=[
+    @prop StateChanged Signal<string>?
+    @within StateMachine
+
+]=]
 StateMachine.DataChanged = nil :: Signal.Signal<string, any, any>?
+--[=[
+    @prop StateChanged Signal<string>?
+    @within StateMachine
+
+]=]
 StateMachine.State = State
+--[=[
+    @prop StateChanged Signal<string>?
+    @within StateMachine
+
+]=]
 StateMachine.Transition = Transition
 StateMachine._States = {} :: {[string]: State.State}
 StateMachine._trove = nil :: Trove
+StateMachine._CurrentState = "" :: string
+StateMachine._PreviousState = "" :: string
+
 --[=[
     Used to create a new State Machine. It expects 3 arguments being the third one an optional one
 
@@ -127,6 +172,15 @@ end
 ]=]
 function StateMachine:GetCurrentState(): string
     return self._CurrentState
+end
+
+--[=[
+    Returns the previous state of the State Machine
+
+    @return string
+]=]
+function StateMachine:GetPreviousState(): string
+    return self._PreviousState
 end
 
 --[=[
@@ -301,6 +355,10 @@ end
 function StateMachine:_ChangeState(newState: string): ()
     assert(self:_StateExists(newState), STATE_NOT_FOUND:format(`change to {newState}`, newState))
 
+    if self._CurrentState == newState then
+        return
+    end
+
     local previousState: State.State? = self:_GetCurrentStateObject()
     local state: State.State? = self._States[newState]
 
@@ -313,8 +371,13 @@ function StateMachine:_ChangeState(newState: string): ()
     end
 
     task.spawn(state.OnEnter, state, self:GetData())
+    
     self._CurrentState = newState
-    self.StateChanged:Fire(newState)
+
+    if previousState then
+        self._PreviousState = previousState.Name
+        self.StateChanged:Fire(newState, previousState.Name or "")
+    end
 end
 
 --[=[

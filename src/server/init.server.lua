@@ -12,6 +12,10 @@ local exampleStateMachine: RobloxStateMachine.RobloxStateMachine = RobloxStateMa
     }
 )
 
+exampleStateMachine.StateChanged:Connect(function(newState: string, previousState: string)
+    print("Our previous state was: " .. previousState .. " now our state is: " .. newState)
+end)
+
 task.wait(2)
 
 exampleStateMachine:ChangeState("Blue")
