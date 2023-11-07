@@ -9,10 +9,63 @@ local Transition = require(script.Parent.Transition)
 local State = {}
 State.__index = State
 State.Type = "State"
+--[=[
+    @prop Name string
+    @within State
+
+    The name of the state. This is used to identify the state. Usually set while creating the state
+
+    ```lua
+    local Blue: State = State.new("Blue")
+    ```
+]=]
 State.Name = "" :: string
+--[=[
+    @prop Transitions string
+    @within State
+
+    A reference for the transitions of this state. This is usually set while creating the state
+
+    ```lua
+    local GoToBlue = require(script.Parent.Parent.Transitions.GoToBlue)
+
+    local State = StateMachine.State
+
+    local Default = State.new("Default")
+    Default.Transitions = {GoToBlue}
+    ```
+]=]
 State.Transitions = {} :: {Transition.Transition}
-State._transitions = {} :: {[string]: Transition.Transition}
+--[=[
+    @prop Data {[string]: any}
+    @within State
+
+    Contains the state machine data, it can be accessed from within the class
+
+    ```lua
+    local Default: State = State.new("Blue")
+
+    function Default:OnInit(data)
+        print(self.Data)
+    end
+    ```
+]=]
 State.Data = {} :: {[string]: any}
+--[=[
+    @prop _transitions {[string]: Transition.Transition}
+    @within State
+    @private
+
+    Used to cache the transitions objects
+]=]
+State._transitions = {} :: {[string]: Transition.Transition}
+--[=[
+    @prop _changeState (newState: string)->()?
+    @within State
+    @private
+
+    This is used to change the state of the state machine. This is set by the state machine itself
+]=]
 State._changeState = nil :: (newState: string)->()?
 
 --[=[
