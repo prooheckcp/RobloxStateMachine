@@ -27,6 +27,9 @@ robloxstatemachine = "prooheckcp/robloxstatemachine@>0.0.0, <10.0.0"
 
 You can start learning in the docs page! https://prooheckcp.github.io/RobloxStateMachine/docs/intro
 
+## 📷Tutorial
+[RobloxStateMachine Tutorial (Studio) - YouTube](https://www.youtube.com/watch?v=7M1LkjPaEFE&ab_channel=Prooheckcp)
+
 # ⭐ Contributing
 Please leave a star on [GitHub](https://github.com/prooheckcp/RobloxStateMachine), it helps a lot!
 
