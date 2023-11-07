@@ -41,16 +41,6 @@ State.Transitions = {} :: {Transition.Transition}
     @within State
 
     Contains the state machine data, it can be accessed from within the class
-
-    ```lua
-    local GoToBlue = Transition.new("Blue")
-    GoToBlue.Name = "GoToBlue"
-
-    function GoToBlue:OnDataChanged(data)
-        print(self.Data)
-        return false
-    end
-    ```
 ]=]
 State.Data = {} :: {[string]: any}
 --[=[
@@ -141,35 +131,6 @@ end
 ]=]
 function State:OnInit(data: {[string]: any}): ()
     assert(data)
-end
-
---[=[
-    :::info
-    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
-    :::
-
-    Called whenever any of the data in the state machine changes
-
-    @param index string -- The index of the data that changed
-
-    Imagine the following Data object:
-
-    {
-        health = 100,
-    }
-
-    if we set the health to 50, the index would be "health", the newValue would be 50 and the oldValue would be 100
-
-    ```lua
-    function State:OnDataChanged(index: string, newValue: any, oldValue: any)
-        print(`Data with the index of {index} changed from {oldValue} to {newValue}`)
-    end
-    ```
-
-    @return ()
-]=]
-function State:OnDataChanged(index: string, newValue: any, oldValue: any): ()
-    assert(index, newValue, oldValue)
 end
 
 --[=[
