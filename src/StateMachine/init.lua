@@ -75,12 +75,6 @@ StateMachine.Data = {} :: {[string]: any}
 ]=]
 StateMachine.StateChanged = nil :: Signal.Signal<(string, string)>?
 --[=[
-    @prop DataChanged Signal<string>?
-    @within StateMachine
-
-]=]
-StateMachine.DataChanged = nil :: Signal.Signal<string, any, any>?
---[=[
     @prop State State
     @within StateMachine
 
@@ -160,7 +154,6 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
     
     self.Data = initialData or {} :: {[string]: any}
     self.StateChanged = Signal.new() :: Signal.Signal<string>
-    self.DataChanged = Signal.new() :: Signal.Signal<string, any, any>
 
     for _, state: State.State in states do -- Load the states
         if self._States[state.Name] then
@@ -211,7 +204,6 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
     end))
 
     self._trove:Add(self.StateChanged)
-    self._trove:Add(self.DataChanged)
 
     self:_ChangeState(initialState)
 
