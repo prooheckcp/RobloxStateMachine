@@ -43,10 +43,12 @@ State.Transitions = {} :: {Transition.Transition}
     Contains the state machine data, it can be accessed from within the class
 
     ```lua
-    local Default: State = State.new("Blue")
+    local GoToBlue = Transition.new("Blue")
+    GoToBlue.Name = "GoToBlue"
 
-    function Default:OnInit(data)
+    function GoToBlue:OnDataChanged(data)
         print(self.Data)
+        return false
     end
     ```
 ]=]
