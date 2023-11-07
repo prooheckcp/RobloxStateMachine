@@ -88,7 +88,6 @@ StateMachine.State = State
     A reference to the Transition class
 ]=]
 StateMachine.Transition = Transition
-
 --[=[
     @prop _States {[string]: State}
     @within StateMachine
@@ -157,7 +156,7 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
 
     for _, state: State.State in states do -- Load the states
         if self._States[state.Name] then
-            error(DUPLICATE_ERROR.." ,"..state.Name, 2)
+            error(DUPLICATE_ERROR.." \""..state.Name.."\"", 2)
         end
 
         local stateClone: State.State = Copy(state)
@@ -189,6 +188,10 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
 
         task.spawn(stateClone.OnInit, stateClone, self.Data)
         self._States[state.Name] = stateClone
+    end
+
+    if not self._States[initialState] then
+        error(STATE_NOT_FOUND:format("create a state machine", initialState), 2)
     end
 
     self._trove:Add(RunService.Heartbeat:Connect(function(deltaTime: number)
@@ -324,7 +327,7 @@ function StateMachine:LoadDirectory(directory: Instance, names: {string}?): {any
                 continue
             end
 
-            if result.Type ~= State.Type and result.Type ~= Transition.Type  then
+            if result.Type ~= State.Type and result.Type ~= Transition.Type then
                 continue
             end
 

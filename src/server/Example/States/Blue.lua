@@ -6,7 +6,7 @@ type State = StateMachine.State
 
 local State = StateMachine.State
 
-local Default: State = State.new("Blue")
+local Default: State = State.new("Default")
 
 function Default:OnInit(data)
     print(self.Data)
