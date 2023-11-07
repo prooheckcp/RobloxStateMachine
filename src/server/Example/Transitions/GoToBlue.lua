@@ -6,7 +6,6 @@ local Transition = StateMachine.Transition
 local GoToBlue = Transition.new("Blue")
 
 function GoToBlue:OnDataChanged(data)
-    --print(self.Data)
     return false
 end
 

@@ -9,7 +9,7 @@ local State = StateMachine.State
 local Default: State = State.new("Blue")
 
 function Default:OnInit(data)
-    
+    print(self.Data, data)
 end
 
 function Default:OnDataChanged(...)

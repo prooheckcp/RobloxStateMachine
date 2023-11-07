@@ -38,7 +38,24 @@ StateMachine.__index = StateMachine
     stateMachine:GetData().health = 50
     ```
 
-    The data is shared accross all states and transitions. You can access it within transti
+    The data is shared accross all states and transitions. It can be access in 2 different ways
+
+    ```lua
+    --transition.lua
+    local GoToBlue = Transition.new("Blue")
+
+    function GoToBlue:OnDataChanged(data)
+        print(self.Data, data) -- 2 ways to access the data
+        return false
+    end
+
+    --state.lua
+    local Default: State = State.new("Blue")
+
+    function Default:OnInit(data)
+        print(self.Data, data)
+    end
+    ```
 ]=]
 StateMachine.Data = {} :: {[string]: any}
 --[=[
@@ -50,7 +67,7 @@ StateMachine.Data = {} :: {[string]: any}
     then it will be an empty string
 
     e.g
-    ```
+    ```lua
     exampleStateMachine.StateChanged:Connect(function(newState: string, previousState: string)
         print("Our previous state was: " .. previousState .. " now our state is: " .. newState)
     end)
@@ -58,26 +75,57 @@ StateMachine.Data = {} :: {[string]: any}
 ]=]
 StateMachine.StateChanged = nil :: Signal.Signal<(string, string)>?
 --[=[
-    @prop StateChanged Signal<string>?
+    @prop DataChanged Signal<string>?
     @within StateMachine
 
 ]=]
 StateMachine.DataChanged = nil :: Signal.Signal<string, any, any>?
 --[=[
-    @prop StateChanged Signal<string>?
+    @prop State State
     @within StateMachine
 
+    A reference to the State class
 ]=]
 StateMachine.State = State
 --[=[
-    @prop StateChanged Signal<string>?
+    @prop Transition Transition
     @within StateMachine
 
+    A reference to the Transition class
 ]=]
 StateMachine.Transition = Transition
-StateMachine._States = {} :: {[string]: State.State}
+
+--[=[
+    @prop _States {[string]: State}
+    @within StateMachine
+    @private
+
+    Caches the states of this state machine. It's used to change states and check transitions
+]=]
+StateMachine._States = {} :: {[string]: State}
+--[=[
+    @prop _trove Trove
+    @within StateMachine
+    @private
+
+    A trove object to store and clear up connections
+]=]
 StateMachine._trove = nil :: Trove
+--[=[
+    @prop _CurrentState string
+    @within StateMachine
+    @private
+
+    Caches the current state in a string format. It's used to fire the StateChanged signal
+]=]
 StateMachine._CurrentState = "" :: string
+--[=[
+    @prop _PreviousState string
+    @within StateMachine
+    @private
+
+    Caches the previous state in a string format. It's used to fire the StateChanged signal
+]=]
 StateMachine._PreviousState = "" :: string
 
 --[=[
@@ -104,10 +152,10 @@ StateMachine._PreviousState = "" :: string
 
     @return RobloxStateMachine
 ]=]
-function StateMachine.new(initialState: string, states: {State.State}, initialData: {[string]: any}?): RobloxStateMachine
+function StateMachine.new(initialState: string, states: {State}, initialData: {[string]: any}?): RobloxStateMachine
     local self = setmetatable({}, StateMachine)
 
-    self._States = {} :: {[string]: State.State}
+    self._States = {} :: {[string]: State}
     self._trove = Trove.new()
     
     self.Data = initialData or {} :: {[string]: any}
@@ -315,7 +363,7 @@ end
     @return ()
 ]=]
 function StateMachine:Destroy(): ()
-    local state: State.State? = self:_GetCurrentStateObject()
+    local state: State? = self:_GetCurrentStateObject()
 
     if state then
         task.spawn(state.OnLeave, state, self:GetData())
@@ -364,8 +412,8 @@ function StateMachine:_ChangeState(newState: string): ()
         return
     end
 
-    local previousState: State.State? = self:_GetCurrentStateObject()
-    local state: State.State? = self._States[newState]
+    local previousState: State? = self:_GetCurrentStateObject()
+    local state: State? = self._States[newState]
 
     if not state then
         return
@@ -392,7 +440,7 @@ end
 
     @return State
 ]=]
-function StateMachine:_GetCurrentStateObject(): State.State?
+function StateMachine:_GetCurrentStateObject(): State?
     return self._States[self:GetCurrentState()]
 end
 
