@@ -4,7 +4,7 @@ local StateMachine = require(ReplicatedStorage.RobloxStateMachine)
 local Transition = StateMachine.Transition
 
 local GoToBlue = Transition.new("Blue")
-GoToBlue.OnHearbeat = false
+GoToBlue.Name = "GoToBlue"
 
 function GoToBlue:OnDataChanged(data)
     return false

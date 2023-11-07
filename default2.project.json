@@ -4,9 +4,6 @@
     "$className": "DataModel",
 
     "ReplicatedStorage": {
-      "Shared": {
-        "$path": "src/shared"
-      },
       "RobloxStateMachine": {
         "$path": "src/StateMachine"
       }
@@ -15,14 +12,6 @@
     "ServerScriptService": {
       "Server": {
         "$path": "src/server"
-      }
-    },
-
-    "StarterPlayer": {
-      "StarterPlayerScripts": {
-        "Client": {
-          "$path": "src/client"
-        }
       }
     }
   }

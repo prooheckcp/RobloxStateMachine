@@ -8,8 +8,66 @@ local Transition = require(script.Parent.Transition)
 ]=]
 local State = {}
 State.__index = State
+State.Type = "State"
+--[=[
+    @prop Name string
+    @within State
+
+    The name of the state. This is used to identify the state. Usually set while creating the state
+
+    ```lua
+    local Blue: State = State.new("Blue")
+    ```
+]=]
 State.Name = "" :: string
+--[=[
+    @prop Transitions string
+    @within State
+
+    A reference for the transitions of this state. This is usually set while creating the state
+
+    ```lua
+    local GoToBlue = require(script.Parent.Parent.Transitions.GoToBlue)
+
+    local State = StateMachine.State
+
+    local Default = State.new("Default")
+    Default.Transitions = {GoToBlue}
+    ```
+]=]
 State.Transitions = {} :: {Transition.Transition}
+--[=[
+    @prop Data {[string]: any}
+    @within State
+
+    Contains the state machine data, it can be accessed from within the class
+
+    ```lua
+    local GoToBlue = Transition.new("Blue")
+    GoToBlue.Name = "GoToBlue"
+
+    function GoToBlue:OnDataChanged(data)
+        print(self.Data)
+        return false
+    end
+    ```
+]=]
+State.Data = {} :: {[string]: any}
+--[=[
+    @prop _transitions {[string]: Transition.Transition}
+    @within State
+    @private
+
+    Used to cache the transitions objects
+]=]
+State._transitions = {} :: {[string]: Transition.Transition}
+--[=[
+    @prop _changeState (newState: string)->()?
+    @within State
+    @private
+
+    This is used to change the state of the state machine. This is set by the state machine itself
+]=]
 State._changeState = nil :: (newState: string)->()?
 
 --[=[
@@ -83,6 +141,35 @@ end
 ]=]
 function State:OnInit(data: {[string]: any}): ()
     assert(data)
+end
+
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
+    Called whenever any of the data in the state machine changes
+
+    @param index string -- The index of the data that changed
+
+    Imagine the following Data object:
+
+    {
+        health = 100,
+    }
+
+    if we set the health to 50, the index would be "health", the newValue would be 50 and the oldValue would be 100
+
+    ```lua
+    function State:OnDataChanged(index: string, newValue: any, oldValue: any)
+        print(`Data with the index of {index} changed from {oldValue} to {newValue}`)
+    end
+    ```
+
+    @return ()
+]=]
+function State:OnDataChanged(index: string, newValue: any, oldValue: any): ()
+    assert(index, newValue, oldValue)
 end
 
 --[=[

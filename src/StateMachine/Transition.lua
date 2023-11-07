@@ -5,8 +5,51 @@
 ]=]
 local Transition = {}
 Transition.__index = Transition
+Transition.Type = "Transition"
+--[=[
+    @prop Name string
+    @within Transition
+
+    The name of the state. This is used to identify the state. Usually set while creating the state
+
+    ```lua
+    local Transition = StateMachine.Transition
+
+    local GoToBlue = Transition.new("Blue")
+    GoToBlue.Name = "GoToBlue"
+    ```
+]=]
+Transition.Name = "" :: string
+--[=[
+    @prop TargetState string
+    @within Transition
+
+    The name of the state. This is used to identify the state. Usually set while creating the state
+
+    ```lua
+    local Transition = StateMachine.Transition
+
+    local GoToBlue = Transition.new("Blue") -- The target state is now "Blue"
+    print(GoToBlue.TargetState) -- "Blue"
+    ```
+]=]
 Transition.TargetState = "" :: string
-Transition.OnHearbeat = true :: boolean -- If it should be checked every frame
+--[=[
+    @prop Data {[string]: any}
+    @within Transition
+
+    Contains the state machine data, it can be accessed from within the class
+
+    ```lua
+    local Default: State = State.new("Blue")
+
+    function Default:OnInit(data)
+        print(self.Data)
+    end
+    ```
+]=]
+Transition.Data = {} :: {[string]: any}
+Transition._changeState = nil :: (newState: string)->()?
 
 --[=[
     Creates a new transition. Transitions are used to tell our state
@@ -55,6 +98,21 @@ end
 function Transition:CanChangeState(data: {[string]: any}): boolean
     assert(data)
     return true
+end
+
+--[=[
+    Forcelly changes the current state of our state machine to a new one
+
+    @param newState string -- The name of the new state
+
+    @return ()
+]=]
+function Transition:ChangeState(newState: string): ()
+    if not self._changeState then
+        return
+    end
+
+    self._changeState(newState)
 end
 
 --[=[
