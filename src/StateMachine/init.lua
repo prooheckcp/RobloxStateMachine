@@ -221,6 +221,11 @@ end
 --[=[
     Returns the current state of the State Machine
 
+    ```lua
+    local exampleStateMachine = RobloxStateMachine.new("Default", {}, {})
+    print(exampleStateMachine:GetCurrentState()) -- Default
+    ```
+
     @return string
 ]=]
 function StateMachine:GetCurrentState(): string
@@ -229,6 +234,12 @@ end
 
 --[=[
     Returns the previous state of the State Machine
+
+    ```lua
+    local exampleStateMachine = RobloxStateMachine.new("Default", {...BlueStateHere}, {})
+    exampleStateMachine:ChangeState("Blue")
+    print(exampleStateMachine:GetPreviousState()) -- "Default"
+    ```
 
     @return string
 ]=]
