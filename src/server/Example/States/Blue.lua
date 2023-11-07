@@ -25,7 +25,7 @@ function Default:OnEnter(data)
 
     self.Data.dummyData = "Goodbye World"
 
-    print(data)
+   -- print(data)
 end
 
 function Default:OnLeave()

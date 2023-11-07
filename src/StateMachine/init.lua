@@ -6,7 +6,6 @@ local Transition = require(script.Transition)
 local Signal = require(script.Signal)
 local Trove = require(script.Trove)
 local Copy = require(script.Copy)
-local ProxyMetatable = require(script.ProxyMetatable)
 
 type Trove = Trove.Trove
 
@@ -111,7 +110,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
     self._States = {} :: {[string]: State.State}
     self._trove = Trove.new()
     
-    self.Data = ProxyMetatable(initialData or {}) :: {[string]: any}
+    self.Data = initialData or {} :: {[string]: any}
     self.StateChanged = Signal.new() :: Signal.Signal<string>
     self.DataChanged = Signal.new() :: Signal.Signal<string, any, any>
 
@@ -126,7 +125,7 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
             self:ChangeState(newState)
         end
 
-        state._transitions = {}
+        stateClone._transitions = {}
 
         for _, transition: Transition in stateClone.Transitions do
             if #transition.Name == 0 then
@@ -138,20 +137,14 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
             if transitionClone.Type ~= Transition.Type then
                 error(WRONG_TRANSITION, 2)
             end
-
-            transitionClone.Data = self.Data
+ 
+            transitionClone.Data = stateClone.Data
             transitionClone._changeState = function(newState: string)
                 self:ChangeState(newState)
             end
 
-            transitionClone.Data = self.Data
-
-            state._transitions[transitionClone.Name] = transitionClone
+            stateClone._transitions[transitionClone.Name] = transitionClone
         end
-
-        self._trove:Add(self.Data:ListenToDataChange(function(...)
-            state:OnDataChanged(...)
-        end))
 
         task.spawn(stateClone.OnInit, stateClone, self.Data)
         self._States[state.Name] = stateClone
@@ -160,17 +153,13 @@ function StateMachine.new(initialState: string, states: {State.State}, initialDa
     self._trove:Add(RunService.Heartbeat:Connect(function(deltaTime: number)
         self:_CheckTransitions()
         
-        local state: State.State? = self:_GetCurrentStateObject()
+        local state = self:_GetCurrentStateObject()
         
         if not state or getmetatable(state).OnHearBeat == state.OnHearBeat then
             return
         end
 
         task.spawn(state.OnHearBeat, state, self._CustomData, deltaTime)
-    end))
-
-    self._trove:Add(self.Data:ListenToDataChange(function(...)
-        self.DataChanged:Fire(...)
     end))
 
     self._trove:Add(self.StateChanged)
@@ -416,7 +405,7 @@ end
     @return ()
 ]=]
 function StateMachine:_CheckTransitions(): ()
-    for _, transition: Transition.Transition in self:_GetCurrentStateObject().Transitions do
+    for _, transition: Transition.Transition in self:_GetCurrentStateObject()._transitions do
         if transition:CanChangeState(self:GetData()) and transition:OnDataChanged(self:GetData()) then
             self:_ChangeState(transition.TargetState)
             break
