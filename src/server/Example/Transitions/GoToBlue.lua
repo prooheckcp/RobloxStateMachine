@@ -7,7 +7,6 @@ local GoToBlue = Transition.new("Blue")
 GoToBlue.Name = "GoToBlue"
 
 function GoToBlue:OnDataChanged(data)
-    print(self.Data)
     return false
 end
 
