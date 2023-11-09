@@ -34,7 +34,7 @@ function Blue:OnEnter(data) -- Called whenever the state changes into "Blue"
 	data.part.Color = Color3.fromRGB(0, 0, 255) -- Change color to blue!
 end
 
-function Blue:OnHearBeat() -- Called every heartbeat
+function Blue:OnHeartBeat() -- Called every heartbeat
 
 end
 
