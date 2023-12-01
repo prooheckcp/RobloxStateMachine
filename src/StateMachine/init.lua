@@ -199,11 +199,11 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
         
         local state = self:_GetCurrentStateObject()
         
-        if not state or getmetatable(state).OnHearBeat == state.OnHearBeat then
+        if not state or getmetatable(state).OnHeartbeat == state.OnHeartbeat then
             return
         end
 
-        task.spawn(state.OnHearBeat, state, self._CustomData, deltaTime)
+        task.spawn(state.OnHeartbeat, state, self:GetData(), deltaTime)
     end))
 
     self._trove:Add(self.StateChanged)
