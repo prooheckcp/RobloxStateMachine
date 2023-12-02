@@ -6,7 +6,7 @@ type State = StateMachine.State
 
 local State = StateMachine.State
 
-local Default: State = State.new("Default")
+local Default: State = State.new("Blue")
 
 function Default:OnInit(data)
     print(self.Data)
@@ -17,7 +17,7 @@ function Default:OnDataChanged(...)
 end
 
 function Default:OnHeartbeat(data)
-
+    print("UwU")
 end
 
 function Default:OnEnter(data)
