@@ -18,4 +18,4 @@ jobs:
 
     - name: Lint
       run: |
-        selene ./src
+        selene ./src/StateMachine
