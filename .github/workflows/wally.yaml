@@ -1,0 +1,33 @@
+name: Wally
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+
+  python:
+    name: Python
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' 
+
+  publish:
+    name: Publish to Wally
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Aftman
+      uses: ok-nick/setup-aftman@v0
+
+    - name: Publish
+      run: |
+        wally login --token ${{ secrets.MOONWAVE_TOKEN }}
+        wally publish
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.MOONWAVE_TOKEN }}
+

@@ -5,7 +5,7 @@ local GoToBlue = require(script.Parent.Parent.Transitions.GoToBlue)
 
 local State = StateMachine.State
 
-local Default = State.new("Default")
+local Default = State.new("Red")
 Default.Transitions = {GoToBlue}
 
 function Default:OnEnter(data)
