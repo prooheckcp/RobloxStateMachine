@@ -96,7 +96,7 @@ end
     @return boolean -- By default it returns true
 ]=]
 function Transition:CanChangeState(data: {[string]: any}): boolean
-    assert(data)
+    assert(data, "")
     return true
 end
 
@@ -128,7 +128,7 @@ end
     @return boolean -- By default it returns false
 ]=]
 function Transition:OnDataChanged(data: {[string]: any}): boolean
-    assert(data)
+    assert(data, "")
     return false
 end
 
