@@ -130,7 +130,7 @@ end
     @return ()
 ]=]
 function State:OnInit(data: {[string]: any}): ()
-    assert(data)
+    assert(data, "")
 end
 
 --[=[
@@ -151,7 +151,7 @@ end
     @return ()
 ]=]
 function State:OnEnter(data: {[string]: any}): ()
-    assert(data)
+    assert(data, "")
 end
 
 --[=[
@@ -173,7 +173,7 @@ end
     @return ()
 ]=]
 function State:OnHeartbeat(data: {[string]: any}, deltaTime: number): ()
-    assert(data and deltaTime)
+    assert(data and deltaTime, "")
 end
 
 --[=[
@@ -194,7 +194,7 @@ end
     @return ()
 ]=]
 function State:OnLeave(data: {[string]: any}): ()
-    assert(data)
+    assert(data, "")
 end
 
 export type State = typeof(State)

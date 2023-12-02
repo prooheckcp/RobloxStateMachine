@@ -1,0 +1,21 @@
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main, development]
+
+jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Aftman
+      uses: ok-nick/setup-aftman@v0
+
+    - name: Lint
+      run: |
+        selene ./src/StateMachine
