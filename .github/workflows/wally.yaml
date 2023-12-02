@@ -2,7 +2,7 @@ name: Wally
 
 on:
   push:
-    branches: [main]
+    branches: [main, development, Settingup-workflow]
   pull_request:
     branches: [main, development, Settingup-workflow]
 
