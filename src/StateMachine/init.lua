@@ -150,6 +150,8 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
 
     self._States = {} :: {[string]: State}
     self._trove = Trove.new()
+
+    self._destroyed = false
     
     self.Data = initialData or {} :: {[string]: any}
     self.StateChanged = Signal.new() :: Signal.Signal<string>
@@ -369,6 +371,11 @@ end
     @return ()
 ]=]
 function StateMachine:Destroy(): ()
+    if self._destroyed then
+        return
+    end
+    self._destroyed = true
+    
     local state: State? = self:_GetCurrentStateObject()
 
     if state then
@@ -412,6 +419,9 @@ end
     @return ()
 ]=]
 function StateMachine:_ChangeState(newState: string): ()
+    if self._destroyed then
+        return
+    end
     assert(self:_StateExists(newState), STATE_NOT_FOUND:format(`change to {newState}`, newState))
 
     if self._CurrentState == newState then
