@@ -138,6 +138,35 @@ end
     This is a **Virtual Method**. Virtual Methods are meant to be overwritten
     :::
 
+    Called whenever the data of the state machine changes.
+
+    ```lua
+    function State:OnDataChanged(data, index, value)
+        if index == "SomeStartingData" then
+            self.SomeStartingData = value
+        end
+    end
+    ```
+
+    @param data {[string]: any} -- This is the data from the StateMachine itself!
+    @param index any -- The index of the data that changed
+    @param value any -- The new value of the data
+    @param oldValue any -- The old value of the data
+
+    @return ()
+]=]
+function State:OnDataChanged(data: {[string]: any}, index: any, value: any, oldValue: any): ()
+    assert(data, "")
+    assert(index, "")
+    assert(value, "")
+    assert(oldValue, "")
+end
+
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
     Called whenever you enter this state
 
     ```lua

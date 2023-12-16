@@ -23,4 +23,4 @@ exampleStateMachine:ChangeState("Blue")
 
 task.wait(2)
 
-exampleStateMachine:Destroy() 
+exampleStateMachine:ChangeData("dummyData", "Goodbye world")
