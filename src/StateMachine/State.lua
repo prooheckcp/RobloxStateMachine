@@ -59,7 +59,14 @@ State._transitions = {} :: {[string]: Transition.Transition}
     This is used to change the state of the state machine. This is set by the state machine itself
 ]=]
 State._changeState = nil :: (newState: string)->()?
+--[=[
+    @prop _changeData (index: string, newValue: any)->()?
+    @within State
+    @private
 
+    This is used to change the data of the state machine. This is set by the state machine itself
+]=]
+State._changeData = nil :: (index: string, newValue: any)-> ()?
 --[=[
     Used to create a new State. The state should manage how the object should behave during
     that given state. I personally recommend having your states in their own files for organizational
@@ -112,6 +119,32 @@ function State:ChangeState(newState: string): ()
 end
 
 --[=[
+    Changing data request. You can also just Get the data and change the data at run time.
+
+    ```lua
+    local example: State = State.new("Blue")
+
+    function example:OnEnter(data)
+        self:ChangeData("color", Color3.fromRGB(255, 0, 0)) -- Change to red :D
+
+        data.part.Color = data.color
+    end
+    ```
+
+    @param index string
+    @param newValue any
+
+    @return ()
+]=]
+function State:ChangeData(index: string, newValue: any): ()
+    if not self._changeData then
+        return
+    end
+
+    self._changeData(index, newValue)
+end
+
+--[=[
     :::info
     This is a **Virtual Method**. Virtual Methods are meant to be overwritten
     :::
@@ -131,6 +164,39 @@ end
 ]=]
 function State:OnInit(data: {[string]: any}): ()
     assert(data, "")
+end
+
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
+    :::warning
+    **OnDataChanged** only gets called when the data is changed by a **ChangeData** call
+    :::
+
+    Called whenever the data of the state machine changes.
+
+    ```lua
+    function State:OnDataChanged(data, index, newValue, oldValue)
+        if index == "SomeStartingData" then
+            self.SomeStartingData = value
+        end
+    end
+    ```
+
+    @param data {[string]: any} -- This is the data from the StateMachine itself!
+    @param index any -- The index of the data that changed
+    @param value any -- The new value of the data
+    @param oldValue any -- The old value of the data
+
+    @return ()
+]=]
+function State:OnDataChanged(data: {[string]: any}, index: any, value: any, oldValue: any): ()
+    assert(data, "")
+    assert(index, "")
+    assert(value, "")
+    assert(oldValue, "")
 end
 
 --[=[
@@ -197,6 +263,6 @@ function State:OnLeave(data: {[string]: any}): ()
     assert(data, "")
 end
 
-export type State = typeof(State)
+export type State = typeof(State.new(...))
 
 return State
