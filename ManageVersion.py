@@ -1,6 +1,6 @@
 import toml
 
-filename = "data.toml"
+filename = "wally.toml"
 version_key = "version"
 container = "package"
 

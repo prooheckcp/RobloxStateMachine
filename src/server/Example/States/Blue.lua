@@ -17,15 +17,12 @@ function Default:OnDataChanged(...)
 end
 
 function Default:OnHeartbeat(data)
-    print("UwU")
 end
 
 function Default:OnEnter(data)
-    data.part.Color = Color3.fromRGB(0, 166, 255)
+    self:ChangeData("color", Color3.fromRGB(0, 0, 255)) -- Change to red :D
 
-    self.Data.dummyData = "Goodbye World"
-
-   -- print(data)
+    data.part.Color = data.color
 end
 
 function Default:OnLeave()

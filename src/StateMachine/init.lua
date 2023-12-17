@@ -59,7 +59,7 @@ StateMachine.__index = StateMachine
 ]=]
 StateMachine.Data = {} :: {[string]: any}
 --[=[
-    @prop StateChanged Signal<(string, string)>?
+    @prop StateChanged⚡ Signal<(string, string)>?
     @within StateMachine
 
     Called whenever the state of this state machinse changes. The first argument
@@ -74,6 +74,24 @@ StateMachine.Data = {} :: {[string]: any}
     ```
 ]=]
 StateMachine.StateChanged = nil :: Signal.Signal<(string, string)>?
+--[=[
+    @prop DataChanged⚡ Signal<({[string]: any}, any, any, any)>?
+    @within StateMachine
+
+    Called whenever the data from the state machine gets changed. 
+
+    :::warning
+    **DataChanged** only gets called when the data is changed by a **ChangeData** call
+    :::
+
+    e.g
+    ```lua
+    exampleStateMachine.StateChanged:Connect(function(newState: string, previousState: string)
+        print("Our previous state was: " .. previousState .. " now our state is: " .. newState)
+    end)
+    ```
+]=]
+StateMachine.DataChanged = nil :: Signal.Signal<({[string]: any}, any, any, any)>?
 --[=[
     @prop State State
     @within StateMachine
@@ -154,7 +172,8 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
     self._destroyed = false
     
     self.Data = initialData or {} :: {[string]: any}
-    self.StateChanged = Signal.new() :: Signal.Signal<string>
+    self.StateChanged = Signal.new() :: Signal.Signal<(string, string)>
+    self.DataChanged = Signal.new() :: Signal.Signal<({[string]: any}, any, any, any)>?
 
     for _, state: State.State in states do -- Load the states
         if self._States[state.Name] then
@@ -165,6 +184,9 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
         stateClone.Data = self.Data
         stateClone._changeState = function(newState: string)
             self:ChangeState(newState)
+        end
+        stateClone._changeData = function(index: string, newValue: any)
+            self:ChangeData(index, newValue)
         end
 
         stateClone._transitions = {}
@@ -209,6 +231,7 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
     end))
 
     self._trove:Add(self.StateChanged)
+    self._trove:Add(self.DataChanged)
 
     self:_ChangeState(initialState)
 
@@ -260,11 +283,16 @@ end
     @return ()
 ]=]
 function StateMachine:ChangeData(index: string, newValue: any): ()
-    if self._CustomData[index] == newValue then
+    if self.Data[index] == newValue then
         return
     end
+    
+    local oldValue: any = self.Data[index]
+    self.Data[index] = newValue
 
-    self._CustomData[index] = newValue
+    local state: State = self._States[self:GetCurrentState()]
+    task.spawn(state.OnDataChanged, state, self.Data, index, newValue, oldValue)
+    self.DataChanged:Fire(self.Data, index, newValue, oldValue)
 end
 
 --[=[
