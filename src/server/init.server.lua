@@ -7,6 +7,7 @@ local exampleStateMachine: RobloxStateMachine.RobloxStateMachine = RobloxStateMa
     "Red",
     RobloxStateMachine:LoadDirectory(script.Example.States, nil), 
     {
+        color = Color3.fromRGB(255, 255, 255),
         part = workspace.Example,
         time = tick(),
         dummyData = "Hello World",

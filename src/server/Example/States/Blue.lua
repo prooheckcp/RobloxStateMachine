@@ -20,7 +20,9 @@ function Default:OnHeartbeat(data)
 end
 
 function Default:OnEnter(data)
-    data.part.Color = Color3.fromRGB(0, 166, 255)
+    self:ChangeData("color", Color3.fromRGB(255, 0, 0)) -- Change to red :D
+
+    data.part.Color = data.color
 end
 
 function Default:OnLeave()

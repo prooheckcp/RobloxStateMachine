@@ -183,6 +183,9 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
         stateClone._changeState = function(newState: string)
             self:ChangeState(newState)
         end
+        stateClone._changeData = function(index: string, newValue: any)
+            self:ChangeData(index, newValue)
+        end
 
         stateClone._transitions = {}
 

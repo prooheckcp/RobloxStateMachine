@@ -59,7 +59,14 @@ State._transitions = {} :: {[string]: Transition.Transition}
     This is used to change the state of the state machine. This is set by the state machine itself
 ]=]
 State._changeState = nil :: (newState: string)->()?
+--[=[
+    @prop _changeData (index: string, newValue: any)->()?
+    @within State
+    @private
 
+    This is used to change the data of the state machine. This is set by the state machine itself
+]=]
+State._changeData = nil :: (index: string, newValue: any)-> ()?
 --[=[
     Used to create a new State. The state should manage how the object should behave during
     that given state. I personally recommend having your states in their own files for organizational
@@ -109,6 +116,32 @@ function State:ChangeState(newState: string): ()
     end
 
     self._changeState(newState)
+end
+
+--[=[
+    Changing data request. You can also just Get the data and change the data at run time.
+
+    ```lua
+    local example: State = State.new("Blue")
+
+    function example:OnEnter(data)
+        self:ChangeData("color", Color3.fromRGB(255, 0, 0)) -- Change to red :D
+
+        data.part.Color = data.color
+    end
+    ```
+
+    @param index string
+    @param newValue any
+
+    @return ()
+]=]
+function State:ChangeData(index: string, newValue: any): ()
+    if not self._changeData then
+        return
+    end
+
+    self._changeData(index, newValue)
 end
 
 --[=[
