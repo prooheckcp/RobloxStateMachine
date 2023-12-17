@@ -138,7 +138,14 @@ StateMachine._CurrentState = "" :: string
     Caches the previous state in a string format. It's used to fire the StateChanged signal
 ]=]
 StateMachine._PreviousState = "" :: string
+--[=[
+    @prop _Destroyed boolean
+    @within StateMachine
+    @private
 
+    Checks if the object has already been destroyed or not
+]=]
+StateMachine._Destroyed = false :: boolean
 --[=[
     Used to create a new State Machine. It expects 3 arguments being the third one an optional one
 
@@ -169,7 +176,7 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
     self._States = {} :: {[string]: State}
     self._trove = Trove.new()
 
-    self._destroyed = false
+    self._Destroyed = false
     
     self.Data = initialData or {} :: {[string]: any}
     self.StateChanged = Signal.new() :: Signal.Signal<(string, string)>
@@ -219,6 +226,10 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
     end
 
     self._trove:Add(RunService.Heartbeat:Connect(function(deltaTime: number)
+        if self._Destroyed then
+            return
+        end
+        
         self:_CheckTransitions()
         
         local state = self:_GetCurrentStateObject()
@@ -283,7 +294,7 @@ end
     @return ()
 ]=]
 function StateMachine:ChangeData(index: string, newValue: any): ()
-    if self.Data[index] == newValue then
+    if self._Destroyed or self.Data[index] == newValue then
         return
     end
     
@@ -399,10 +410,11 @@ end
     @return ()
 ]=]
 function StateMachine:Destroy(): ()
-    if self._destroyed then
+    if self._Destroyed then
         return
     end
-    self._destroyed = true
+    
+    self._Destroyed = true
     
     local state: State? = self:_GetCurrentStateObject()
 
@@ -447,7 +459,7 @@ end
     @return ()
 ]=]
 function StateMachine:_ChangeState(newState: string): ()
-    if self._destroyed then
+    if self._Destroyed then
         return
     end
     assert(self:_StateExists(newState), STATE_NOT_FOUND:format(`change to {newState}`, newState))
