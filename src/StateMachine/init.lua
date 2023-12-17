@@ -229,7 +229,7 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
         if self._Destroyed then
             return
         end
-        
+
         self:_CheckTransitions()
         
         local state = self:_GetCurrentStateObject()
@@ -462,6 +462,7 @@ function StateMachine:_ChangeState(newState: string): ()
     if self._Destroyed then
         return
     end
+    
     assert(self:_StateExists(newState), STATE_NOT_FOUND:format(`change to {newState}`, newState))
 
     if self._CurrentState == newState then
