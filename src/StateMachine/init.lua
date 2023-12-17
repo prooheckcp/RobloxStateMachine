@@ -284,9 +284,8 @@ function StateMachine:ChangeData(index: string, newValue: any): ()
     if self.Data[index] == newValue then
         return
     end
-    print("Old Value", self.Data)
+    
     local oldValue: any = self.Data[index]
-    print("Old Value", oldValue, self.Data)
     self.Data[index] = newValue
 
     local state: State = self._States[self:GetCurrentState()]

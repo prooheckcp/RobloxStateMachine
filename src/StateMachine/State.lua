@@ -263,6 +263,6 @@ function State:OnLeave(data: {[string]: any}): ()
     assert(data, "")
 end
 
-export type State = typeof(State)
+export type State = typeof(State.new(...))
 
 return State
