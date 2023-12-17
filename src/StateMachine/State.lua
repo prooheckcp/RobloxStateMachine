@@ -138,10 +138,14 @@ end
     This is a **Virtual Method**. Virtual Methods are meant to be overwritten
     :::
 
+    :::warning
+    **OnDataChanged** only gets called when the data is changed by a **ChangeData** call
+    :::
+
     Called whenever the data of the state machine changes.
 
     ```lua
-    function State:OnDataChanged(data, index, value)
+    function State:OnDataChanged(data, index, newValue, oldValue)
         if index == "SomeStartingData" then
             self.SomeStartingData = value
         end
