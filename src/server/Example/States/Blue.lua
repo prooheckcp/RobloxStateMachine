@@ -2,31 +2,26 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local StateMachine = require(ReplicatedStorage.RobloxStateMachine)
 
-type State = StateMachine.State
-
 local State = StateMachine.State
 
-local Default: State = State.new("Blue")
+local Blue = State.new("Blue")
+Blue.Transitions = {}
 
-function Default:OnInit(data)
-    print(self.Data)
+function Blue:OnHeartbeat(data, deltatime)
+    local newData = data.timer + deltatime
+    self:ChangeData("timer", newData)
 end
 
-function Default:OnDataChanged(...)
-    print("Data Changed!", ...)
-end
-
-function Default:OnHeartbeat(data)
-end
-
-function Default:OnEnter(data)
-    self:ChangeData("color", Color3.fromRGB(0, 0, 255)) -- Change to red :D
+function Blue:OnEnter(data)
+    print("blue enter")
+    self:ChangeData("timer", 0)
+    self:ChangeData("color", Color3.fromRGB(0, 0, 255))
 
     data.part.Color = data.color
 end
 
-function Default:OnLeave()
+function Blue:OnLeave()
     print("Left state!")
 end
 
-return Default
+return Blue

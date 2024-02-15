@@ -162,8 +162,8 @@ end
 
     @return ()
 ]=]
-function State:OnInit(data: {[string]: any}): ()
-    assert(data, "")
+function State:OnInit(_data: {[string]: any}): ()
+
 end
 
 --[=[
@@ -192,11 +192,8 @@ end
 
     @return ()
 ]=]
-function State:OnDataChanged(data: {[string]: any}, index: any, value: any, oldValue: any): ()
-    assert(data, "")
-    assert(index, "")
-    assert(value, "")
-    assert(oldValue, "")
+function State:OnDataChanged(_data: {[string]: any}, _index: any, _value: any, _oldValue: any): ()
+
 end
 
 --[=[
@@ -216,8 +213,8 @@ end
 
     @return ()
 ]=]
-function State:OnEnter(data: {[string]: any}): ()
-    assert(data, "")
+function State:OnEnter(_data: {[string]: any}): ()
+
 end
 
 --[=[
@@ -238,8 +235,8 @@ end
 
     @return ()
 ]=]
-function State:OnHeartbeat(data: {[string]: any}, deltaTime: number): ()
-    assert(data and deltaTime, "")
+function State:OnHeartbeat(_data: {[string]: any}, _deltaTime: number): ()
+
 end
 
 --[=[
@@ -259,8 +256,8 @@ end
 
     @return ()
 ]=]
-function State:OnLeave(data: {[string]: any}): ()
-    assert(data, "")
+function State:OnLeave(_data: {[string]: any}): ()
+
 end
 
 export type State = typeof(State.new(...))
