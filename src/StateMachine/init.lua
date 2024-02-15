@@ -480,7 +480,7 @@ function StateMachine:_ChangeState(newState: string): ()
         task.spawn(previousState.OnLeave, previousState, self:GetData())
     end
 
-    task.spawn(state.OnEnter, state, self:GetData())
+    task.defer(state.OnEnter, state, self:GetData())
     
     self._CurrentState = newState
 

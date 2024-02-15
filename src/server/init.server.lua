@@ -3,7 +3,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RobloxStateMachine = require(ReplicatedStorage.RobloxStateMachine)
 
 
-local exampleStateMachine: RobloxStateMachine.RobloxStateMachine = RobloxStateMachine.new(
+local exampleStateMachine = RobloxStateMachine.new(
     "Red",
     RobloxStateMachine:LoadDirectory(script.Example.States, nil), 
     {
