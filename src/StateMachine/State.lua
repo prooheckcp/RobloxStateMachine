@@ -158,7 +158,7 @@ end
     end
     ```
 
-    @param data {[string]: any} -- This is the data from the StateMachine itself!
+    @param _data {[string]: any} -- This is the data from the StateMachine itself!
 
     @return ()
 ]=]
@@ -185,10 +185,10 @@ end
     end
     ```
 
-    @param data {[string]: any} -- This is the data from the StateMachine itself!
-    @param index any -- The index of the data that changed
-    @param value any -- The new value of the data
-    @param oldValue any -- The old value of the data
+    @param _data {[string]: any} -- This is the data from the StateMachine itself!
+    @param _index any -- The index of the data that changed
+    @param _value any -- The new value of the data
+    @param _oldValue any -- The old value of the data
 
     @return ()
 ]=]
@@ -209,7 +209,7 @@ end
     end
     ```
 
-    @param data {[string]: any} -- This is the data from the StateMachine itself!
+    @param _data {[string]: any} -- This is the data from the StateMachine itself!
 
     @return ()
 ]=]
@@ -230,8 +230,8 @@ end
     end
     ```
 
-    @param data {[string]: any} -- This is the data from the StateMachine itself!
-    @param deltaTime number
+    @param _data {[string]: any} -- This is the data from the StateMachine itself!
+    @param _deltaTime number
 
     @return ()
 ]=]
@@ -252,7 +252,7 @@ end
     end
     ```
 
-    @param data {[string]: any} -- This is the data from the StateMachine itself!
+    @param _data {[string]: any} -- This is the data from the StateMachine itself!
 
     @return ()
 ]=]
