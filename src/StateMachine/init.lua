@@ -219,6 +219,15 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
             end
 
             local transitionClone: Transition = Copy(transition)
+            transitionClone._changeData = function(index: string, newValue: any)
+                self:ChangeData(index, newValue)
+            end
+            transitionClone._getState = function()
+                return self:GetCurrentState()
+            end
+            transitionClone._getPreviousState = function()
+                return self:GetPreviousState()
+            end
 
             if transitionClone.Type ~= Transition.Type then
                 error(WRONG_TRANSITION, 2)

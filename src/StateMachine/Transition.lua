@@ -49,7 +49,38 @@ Transition.TargetState = "" :: string
     ```
 ]=]
 Transition.Data = {} :: {[string]: any}
+--[=[
+    @prop _changeState (newState: string)->()?
+    @within Transition
+    @private
+
+    This is used to change the state of the state machine. This is set by the state machine itself
+]=]
 Transition._changeState = nil :: (newState: string)->()?
+--[=[
+    @prop _changeData (index: string, newValue: any)->()?
+    @within Transition
+    @private
+
+    This is used to change the data of the state machine. This is set by the state machine itself
+]=]
+Transition._changeData = nil :: (index: string, newValue: any)-> ()?
+--[=[
+    @prop _getState (index: string, newValue: any)-> string
+    @within Transition
+    @private
+
+    Gets the current state of our state machine
+]=]
+Transition._getState = nil :: (index: string, newValue: any)-> string
+--[=[
+    @prop _getPreviousState ()-> string?
+    @within Transition
+    @private
+
+    Gets the previous state of our state machine
+]=]
+Transition._getPreviousState = nil :: ()-> string?
 
 --[=[
     Creates a new transition. Transitions are used to tell our state
@@ -130,6 +161,58 @@ end
 function Transition:OnDataChanged(data: {[string]: any}): boolean
     assert(data, "")
     return false
+end
+
+--[=[
+    Gets the current state of our state machine
+
+    @return string
+]=]
+function Transition:GetState(): string
+    if not self._getState then
+        return ""
+    end
+
+    return self._getState()
+end
+
+--[=[
+    Gets the previous state of our state machine
+
+    @return string
+]=]
+function Transition:GetPreviousState(): string
+    if not self._getPreviousState then
+        return ""
+    end
+
+    return self._getPreviousState()
+end
+
+--[=[
+    Changing data request. You can also just Get the data and change the data at run time.
+
+    ```lua
+    local example: State = State.new("Blue")
+
+    function example:OnEnter(data)
+        self:ChangeData("color", Color3.fromRGB(255, 0, 0)) -- Change to red :D
+
+        data.part.Color = data.color
+    end
+    ```
+
+    @param index string
+    @param newValue any
+
+    @return ()
+]=]
+function Transition:ChangeData(index: string, newValue: any): ()
+    if not self._changeData then
+        return
+    end
+
+    self._changeData(index, newValue)
 end
 
 export type Transition = typeof(Transition)
