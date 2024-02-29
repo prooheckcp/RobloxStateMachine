@@ -120,6 +120,49 @@ end
     This is a **Virtual Method**. Virtual Methods are meant to be overwritten
     :::
 
+    Called whenever you enter this transition object
+
+    ```lua
+    function State:OnEnter(data)
+        data.part.Color = Color3.fromRGB(0, 166, 255)
+    end
+    ```
+
+    @param _data {[string]: any} -- This is the data from the StateMachine itself!
+
+    @return ()
+]=]
+function Transition:OnEnter(_data: {[string]: any}): ()
+
+end
+
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
+    Called whenever you leave this transition object
+
+    ```lua
+    function State:OnLeave(data)
+        data.stuff:Clean()
+    end
+    ```
+
+    @param _data {[string]: any} -- This is the data from the StateMachine itself!
+
+    @return ()
+]=]
+function Transition:OnLeave(_data: {[string]: any}): ()
+
+end
+
+
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
     Whether it can change to this state or not. It's a good way to lock the current state
 
     @param data {[string]: any}

@@ -302,6 +302,6 @@ function State:OnLeave(_data: {[string]: any}): ()
 
 end
 
-export type State = typeof(State.new(...))
+export type State = typeof(State)
 
 return State

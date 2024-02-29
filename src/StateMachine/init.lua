@@ -510,8 +510,12 @@ function StateMachine:_ChangeState(newState: string): ()
     self._stateTrove:Clean()
     if previousState then
         task.spawn(previousState.OnLeave, previousState, self:GetData())
+        self:_CallTransitions(previousState, "OnLeave", self:GetData())
     end
 
+    task.defer(function()
+        self:_CallTransitions(state, "OnEnter", self:GetData())
+    end)
     self._stateTrove:Add(task.defer(state.OnEnter, state, self:GetData()))
     
     self._CurrentState = newState
@@ -542,12 +546,29 @@ end
     @return ()
 ]=]
 function StateMachine:_CheckTransitions(): ()
-    for _, transition: Transition.Transition in self:_GetCurrentStateObject()._transitions do
+    for _, transition: Transition in self:_GetCurrentStateObject()._transitions do
         if transition:CanChangeState(self:GetData()) and transition:OnDataChanged(self:GetData()) then
             self:_ChangeState(transition.TargetState)
             break
         end
     end    
+end
+
+--[=[
+    Calls the transition method of the given state
+
+    @param state State
+    @param methodName string
+    @param ... any
+
+    @private
+
+    @return ()
+]=]
+function StateMachine:_CallTransitions(state: State, methodName: string, ...: any): ()
+    for _, transition: Transition in state._transitions do
+        task.spawn(transition[methodName], transition, ...)
+    end
 end
 
 export type RobloxStateMachine = typeof(StateMachine)

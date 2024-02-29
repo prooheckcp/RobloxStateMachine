@@ -15,7 +15,7 @@ function Blue:OnEnter(data)
     self:ChangeData("timer", 0)
     self:ChangeData("color", Color3.fromRGB(0, 0, 255))
 
-    print(self:GetState(), self:GetPreviousState())
+    --print(self:GetState(), self:GetPreviousState())
 
     data.part.Color = data.color
 end
