@@ -204,6 +204,12 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
         stateClone._changeData = function(index: string, newValue: any)
             self:ChangeData(index, newValue)
         end
+        stateClone._getState = function()
+            return self:GetCurrentState()
+        end
+        stateClone._getPreviousState = function()
+            return self:GetPreviousState()
+        end
 
         stateClone._transitions = {}
 

@@ -68,6 +68,22 @@ State._changeState = nil :: (newState: string)->()?
 ]=]
 State._changeData = nil :: (index: string, newValue: any)-> ()?
 --[=[
+    @prop _getState (index: string, newValue: any)-> string
+    @within State
+    @private
+
+    Gets the current state of our state machine
+]=]
+State._getState = nil :: (index: string, newValue: any)-> string
+--[=[
+    @prop _getPreviousState ()-> string?
+    @within State
+    @private
+
+    Gets the previous state of our state machine
+]=]
+State._getPreviousState = nil :: ()-> string?
+--[=[
     Used to create a new State. The state should manage how the object should behave during
     that given state. I personally recommend having your states in their own files for organizational
     purposes
@@ -116,6 +132,32 @@ function State:ChangeState(newState: string): ()
     end
 
     self._changeState(newState)
+end
+
+--[=[
+    Gets the current state of our state machine
+
+    @return string
+]=]
+function State:GetState(): string
+    if not self._getState then
+        return ""
+    end
+
+    return self._getState()
+end
+
+--[=[
+    Gets the previous state of our state machine
+
+    @return string
+]=]
+function State:GetPreviousState(): string
+    if not self._getPreviousState then
+        return ""
+    end
+
+    return self._getPreviousState()
 end
 
 --[=[
