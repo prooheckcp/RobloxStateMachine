@@ -121,7 +121,15 @@ StateMachine._States = {} :: {[string]: State}
 
     A trove object to store and clear up connections
 ]=]
-StateMachine._trove = nil :: Trove
+StateMachine._trove = newproxy() :: Trove
+--[=[
+    @prop _stateTrove Trove
+    @within StateMachine
+    @private
+
+    A trove object to clear state threads and connections
+]=]
+StateMachine._stateTrove = newproxy() :: Trove
 --[=[
     @prop _CurrentState string
     @within StateMachine
@@ -175,6 +183,7 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
 
     self._States = {} :: {[string]: State}
     self._trove = Trove.new()
+    self._stateTrove = Trove.new()
 
     self._Destroyed = false
     
@@ -429,6 +438,7 @@ function StateMachine:Destroy(): ()
     end
 
     self._trove:Destroy()
+    self._stateTrove:Destroy()
 end
 
 --[=[
@@ -482,11 +492,12 @@ function StateMachine:_ChangeState(newState: string): ()
         return
     end
 
+    self._stateTrove:Clean()
     if previousState then
         task.spawn(previousState.OnLeave, previousState, self:GetData())
     end
 
-    task.defer(state.OnEnter, state, self:GetData())
+    self._stateTrove:Add(task.defer(state.OnEnter, state, self:GetData()))
     
     self._CurrentState = newState
 
