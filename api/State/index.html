@@ -6,8 +6,8 @@
 <title data-rh="true">State | RobloxStateMachine</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://prooheckcp.github.io/RobloxStateMachine/api/State"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="State | RobloxStateMachine"><meta data-rh="true" name="description" content="Describes one of the many states an object can have. It also declares
 how it should behave when it enters, is and leaves the given state"><meta data-rh="true" property="og:description" content="Describes one of the many states an object can have. It also declares
 how it should behave when it enters, is and leaves the given state"><link data-rh="true" rel="canonical" href="https://prooheckcp.github.io/RobloxStateMachine/api/State"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachine/api/State" hreflang="en"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachine/api/State" hreflang="x-default"><link rel="stylesheet" href="/RobloxStateMachine/assets/css/styles.abe73a28.css">
-<link rel="preload" href="/RobloxStateMachine/assets/js/runtime~main.f1eb8483.js" as="script">
-<link rel="preload" href="/RobloxStateMachine/assets/js/main.9fd130c8.js" as="script">
+<link rel="preload" href="/RobloxStateMachine/assets/js/runtime~main.8fa59ceb.js" as="script">
+<link rel="preload" href="/RobloxStateMachine/assets/js/main.08115e46.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -31,7 +31,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
 </code></pre>
 </div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Data"><code style="text-decoration:none">Data</code><a href="#Data" class="hash-link" aria-label="Direct link to Data" title="Direct link to Data">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L45"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->.<!-- -->Data<!-- -->:<!-- --> </code> <code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code></div><div>
 <p>Contains the state machine data, it can be accessed from within the class</p>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a href="#new" class="hash-link" aria-label="Direct link to new" title="Direct link to new">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L97"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><code>stateName<!-- -->: </code><code class="blue_P4bS">string?</code><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RobloxStateMachine/api/State">State</a></code></div><div>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a href="#new" class="hash-link" aria-label="Direct link to new" title="Direct link to new">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L113"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><code>stateName<!-- -->: </code><code class="blue_P4bS">string?</code><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/RobloxStateMachine/api/State">State</a></code></div><div>
 <p>
   Used to create a new State. The state should manage how the object should behave during
   that given state. I personally recommend having your states in their own files for organizational
@@ -53,11 +53,15 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
 
 <span class="token keyword">return</span> Default
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ChangeState"><code style="text-decoration:none">ChangeState</code><a href="#ChangeState" class="hash-link" aria-label="Direct link to ChangeState" title="Direct link to ChangeState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L113"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">ChangeState</code><code>(</code><div class="inset_uKQm"><div><code>newState<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ChangeState"><code style="text-decoration:none">ChangeState</code><a href="#ChangeState" class="hash-link" aria-label="Direct link to ChangeState" title="Direct link to ChangeState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L129"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">ChangeState</code><code>(</code><div class="inset_uKQm"><div><code>newState<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
 <p>The name of the new state</p>
 </span></span></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
 <p>Forcelly changes the current state of our state machine to a new one</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ChangeData"><code style="text-decoration:none">ChangeData</code><a href="#ChangeData" class="hash-link" aria-label="Direct link to ChangeData" title="Direct link to ChangeData">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L139"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">ChangeData</code><code>(</code><div class="inset_uKQm"><div><code>index<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code></div><div><code>newValue<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetState"><code style="text-decoration:none">GetState</code><a href="#GetState" class="hash-link" aria-label="Direct link to GetState" title="Direct link to GetState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L142"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">GetState</code><code>(</code><code>) → </code><code class="blue_P4bS">string</code></div><div>
+<p>Gets the current state of our state machine</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetPreviousState"><code style="text-decoration:none">GetPreviousState</code><a href="#GetPreviousState" class="hash-link" aria-label="Direct link to GetPreviousState" title="Direct link to GetPreviousState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L155"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">GetPreviousState</code><code>(</code><code>) → </code><code class="blue_P4bS">string</code></div><div>
+<p>Gets the previous state of our state machine</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ChangeData"><code style="text-decoration:none">ChangeData</code><a href="#ChangeData" class="hash-link" aria-label="Direct link to ChangeData" title="Direct link to ChangeData">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L181"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">ChangeData</code><code>(</code><div class="inset_uKQm"><div><code>index<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code></div><div><code>newValue<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
 <p>Changing data request. You can also just Get the data and change the data at run time.</p>
 <pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> example<span class="token punctuation">:</span> State <span class="token operator">=</span> State<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"Blue"</span><span class="token punctuation">)</span>
 
@@ -67,7 +71,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
     data<span class="token punctuation">.</span>part<span class="token punctuation">.</span>Color <span class="token operator">=</span> data<span class="token punctuation">.</span>color
 <span class="token keyword">end</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnInit"><code style="text-decoration:none">OnInit</code><a href="#OnInit" class="hash-link" aria-label="Direct link to OnInit" title="Direct link to OnInit">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L165"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnInit</code><code>(</code><div class="inset_uKQm"><div><code>_data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnInit"><code style="text-decoration:none">OnInit</code><a href="#OnInit" class="hash-link" aria-label="Direct link to OnInit" title="Direct link to OnInit">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L207"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnInit</code><code>(</code><div class="inset_uKQm"><div><code>_data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><span class="inlineDescription_G7Er">-- <span>
 <p>This is the data from the StateMachine itself!</p>
 </span></span></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
 <div class="admonition admonition-info alert alert--info">
@@ -86,7 +90,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
     self<span class="token punctuation">.</span>SomeStartingData <span class="token operator">=</span> <span class="token function">tick</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">end</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnDataChanged"><code style="text-decoration:none">OnDataChanged</code><a href="#OnDataChanged" class="hash-link" aria-label="Direct link to OnDataChanged" title="Direct link to OnDataChanged">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L195"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnDataChanged</code><code>(</code><div class="inset_uKQm"><div><code>_data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnDataChanged"><code style="text-decoration:none">OnDataChanged</code><a href="#OnDataChanged" class="hash-link" aria-label="Direct link to OnDataChanged" title="Direct link to OnDataChanged">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L237"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnDataChanged</code><code>(</code><div class="inset_uKQm"><div><code>_data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>This is the data from the StateMachine itself!</p>
 </span></span></div><div><code>_index<!-- -->: </code><code class="blue_P4bS">any</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>The index of the data that changed</p>
@@ -122,7 +126,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
     <span class="token keyword">end</span>
 <span class="token keyword">end</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnEnter"><code style="text-decoration:none">OnEnter</code><a href="#OnEnter" class="hash-link" aria-label="Direct link to OnEnter" title="Direct link to OnEnter">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L216"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnEnter</code><code>(</code><div class="inset_uKQm"><div><code>_data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnEnter"><code style="text-decoration:none">OnEnter</code><a href="#OnEnter" class="hash-link" aria-label="Direct link to OnEnter" title="Direct link to OnEnter">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L258"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnEnter</code><code>(</code><div class="inset_uKQm"><div><code>_data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><span class="inlineDescription_G7Er">-- <span>
 <p>This is the data from the StateMachine itself!</p>
 </span></span></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
 <div class="admonition admonition-info alert alert--info">
@@ -140,7 +144,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
     data<span class="token punctuation">.</span>part<span class="token punctuation">.</span>Color <span class="token operator">=</span> Color3<span class="token punctuation">.</span><span class="token function">fromRGB</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">166</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span>
 <span class="token keyword">end</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnHeartbeat"><code style="text-decoration:none">OnHeartbeat</code><a href="#OnHeartbeat" class="hash-link" aria-label="Direct link to OnHeartbeat" title="Direct link to OnHeartbeat">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L238"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnHeartbeat</code><code>(</code><div class="inset_uKQm"><div><code>_data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnHeartbeat"><code style="text-decoration:none">OnHeartbeat</code><a href="#OnHeartbeat" class="hash-link" aria-label="Direct link to OnHeartbeat" title="Direct link to OnHeartbeat">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L280"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnHeartbeat</code><code>(</code><div class="inset_uKQm"><div><code>_data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
 <p>This is the data from the StateMachine itself!</p>
 </span></span></div><div><code>_deltaTime<!-- -->: </code><code class="blue_P4bS">number</code></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
 <div class="admonition admonition-info alert alert--info">
@@ -158,7 +162,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
     self<span class="token punctuation">.</span>timePassed <span class="token operator">+</span><span class="token operator">=</span> deltaTime
 <span class="token keyword">end</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnLeave"><code style="text-decoration:none">OnLeave</code><a href="#OnLeave" class="hash-link" aria-label="Direct link to OnLeave" title="Direct link to OnLeave">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L259"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnLeave</code><code>(</code><div class="inset_uKQm"><div><code>_data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="OnLeave"><code style="text-decoration:none">OnLeave</code><a href="#OnLeave" class="hash-link" aria-label="Direct link to OnLeave" title="Direct link to OnLeave">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/State.lua#L301"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>State<!-- -->:</code><code class="green_DgR4">OnLeave</code><code>(</code><div class="inset_uKQm"><div><code>_data<!-- -->: </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code><span class="inlineDescription_G7Er">-- <span>
 <p>This is the data from the StateMachine itself!</p>
 </span></span></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
 <div class="admonition admonition-info alert alert--info">
@@ -196,7 +200,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 97,
+                &quot;line&quot;: 113,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         },
@@ -218,7 +222,39 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 113,
+                &quot;line&quot;: 129,
+                &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;GetState&quot;,
+            &quot;desc&quot;: &quot;Gets the current state of our state machine&quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 142,
+                &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;GetPreviousState&quot;,
+            &quot;desc&quot;: &quot;Gets the previous state of our state machine&quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;string&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 155,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         },
@@ -245,7 +281,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 139,
+                &quot;line&quot;: 181,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         },
@@ -267,7 +303,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 165,
+                &quot;line&quot;: 207,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         },
@@ -304,7 +340,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 195,
+                &quot;line&quot;: 237,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         },
@@ -326,7 +362,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 216,
+                &quot;line&quot;: 258,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         },
@@ -353,7 +389,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 238,
+                &quot;line&quot;: 280,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         },
@@ -375,7 +411,7 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 259,
+                &quot;line&quot;: 301,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
         }
@@ -437,6 +473,26 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
                 &quot;line&quot;: 69,
                 &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
             }
+        },
+        {
+            &quot;name&quot;: &quot;_getState&quot;,
+            &quot;desc&quot;: &quot;Gets the current state of our state machine&quot;,
+            &quot;lua_type&quot;: &quot;(index: string, newValue: any)-&gt; string&quot;,
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 77,
+                &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;_getPreviousState&quot;,
+            &quot;desc&quot;: &quot;Gets the previous state of our state machine&quot;,
+            &quot;lua_type&quot;: &quot;()-&gt; string?&quot;,
+            &quot;private&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 85,
+                &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
+            }
         }
     ],
     &quot;types&quot;: [],
@@ -446,8 +502,8 @@ Default<span class="token punctuation">.</span>Transitions <span class="token op
         &quot;line&quot;: 9,
         &quot;path&quot;: &quot;src/StateMachine/State.lua&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#Data" class="table-of-contents__link toc-highlight">Data</a></li><li><a href="#Name" class="table-of-contents__link toc-highlight">Name</a></li><li><a href="#Transitions" class="table-of-contents__link toc-highlight">Transitions</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#ChangeData" class="table-of-contents__link toc-highlight">:ChangeData</a></li><li><a href="#ChangeState" class="table-of-contents__link toc-highlight">:ChangeState</a></li><li><a href="#OnDataChanged" class="table-of-contents__link toc-highlight">:OnDataChanged</a></li><li><a href="#OnEnter" class="table-of-contents__link toc-highlight">:OnEnter</a></li><li><a href="#OnHeartbeat" class="table-of-contents__link toc-highlight">:OnHeartbeat</a></li><li><a href="#OnInit" class="table-of-contents__link toc-highlight">:OnInit</a></li><li><a href="#OnLeave" class="table-of-contents__link toc-highlight">:OnLeave</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 prooheckcp. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/RobloxStateMachine/assets/js/runtime~main.f1eb8483.js"></script>
-<script src="/RobloxStateMachine/assets/js/main.9fd130c8.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#Data" class="table-of-contents__link toc-highlight">Data</a></li><li><a href="#Name" class="table-of-contents__link toc-highlight">Name</a></li><li><a href="#Transitions" class="table-of-contents__link toc-highlight">Transitions</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#ChangeData" class="table-of-contents__link toc-highlight">:ChangeData</a></li><li><a href="#ChangeState" class="table-of-contents__link toc-highlight">:ChangeState</a></li><li><a href="#GetPreviousState" class="table-of-contents__link toc-highlight">:GetPreviousState</a></li><li><a href="#GetState" class="table-of-contents__link toc-highlight">:GetState</a></li><li><a href="#OnDataChanged" class="table-of-contents__link toc-highlight">:OnDataChanged</a></li><li><a href="#OnEnter" class="table-of-contents__link toc-highlight">:OnEnter</a></li><li><a href="#OnHeartbeat" class="table-of-contents__link toc-highlight">:OnHeartbeat</a></li><li><a href="#OnInit" class="table-of-contents__link toc-highlight">:OnInit</a></li><li><a href="#OnLeave" class="table-of-contents__link toc-highlight">:OnLeave</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 prooheckcp. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/RobloxStateMachine/assets/js/runtime~main.8fa59ceb.js"></script>
+<script src="/RobloxStateMachine/assets/js/main.08115e46.js"></script>
 </body>
 </html>
