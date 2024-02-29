@@ -19,6 +19,7 @@ function Red:OnEnter(data)
         self:ChangeState("Blue")
     end)
 
+    print(self:GetState(), self:GetPreviousState())
     data.part.Color = Color3.fromRGB(255, 0, 0)
 end
 
