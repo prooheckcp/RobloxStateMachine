@@ -14,14 +14,6 @@ local exampleStateMachine = RobloxStateMachine.new(
     }
 )
 
-exampleStateMachine.DataChanged:Connect(function(...)
-    print(...)
-end)
-
-task.delay(2, function()
-    exampleStateMachine:ChangeData("dummyData", "Goodbye World!")
-    print(exampleStateMachine.Data)
-end)
 
 --[[
 exampleStateMachine.StateChanged:Connect(function(newState: string, previousState: string)

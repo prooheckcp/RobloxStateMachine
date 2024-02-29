@@ -121,7 +121,15 @@ StateMachine._States = {} :: {[string]: State}
 
     A trove object to store and clear up connections
 ]=]
-StateMachine._trove = nil :: Trove
+StateMachine._trove = newproxy() :: Trove
+--[=[
+    @prop _stateTrove Trove
+    @within StateMachine
+    @private
+
+    A trove object to clear state threads and connections
+]=]
+StateMachine._stateTrove = newproxy() :: Trove
 --[=[
     @prop _CurrentState string
     @within StateMachine
@@ -175,6 +183,7 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
 
     self._States = {} :: {[string]: State}
     self._trove = Trove.new()
+    self._stateTrove = Trove.new()
 
     self._Destroyed = false
     
@@ -195,6 +204,12 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
         stateClone._changeData = function(index: string, newValue: any)
             self:ChangeData(index, newValue)
         end
+        stateClone._getState = function()
+            return self:GetCurrentState()
+        end
+        stateClone._getPreviousState = function()
+            return self:GetPreviousState()
+        end
 
         stateClone._transitions = {}
 
@@ -204,6 +219,15 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
             end
 
             local transitionClone: Transition = Copy(transition)
+            transitionClone._changeData = function(index: string, newValue: any)
+                self:ChangeData(index, newValue)
+            end
+            transitionClone._getState = function()
+                return self:GetCurrentState()
+            end
+            transitionClone._getPreviousState = function()
+                return self:GetPreviousState()
+            end
 
             if transitionClone.Type ~= Transition.Type then
                 error(WRONG_TRANSITION, 2)
@@ -225,6 +249,7 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
         error(STATE_NOT_FOUND:format("create a state machine", initialState), 2)
     end
 
+    local previousState: State = nil
     self._trove:Add(RunService.Heartbeat:Connect(function(deltaTime: number)
         if self._Destroyed then
             return
@@ -233,7 +258,12 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
         self:_CheckTransitions()
         
         local state = self:_GetCurrentStateObject()
-        
+        local firstFrame: boolean = state ~= previousState
+        previousState = state
+        if firstFrame then
+            return
+        end
+
         if not state or getmetatable(state).OnHeartbeat == state.OnHeartbeat then
             return
         end
@@ -423,6 +453,7 @@ function StateMachine:Destroy(): ()
     end
 
     self._trove:Destroy()
+    self._stateTrove:Destroy()
 end
 
 --[=[
@@ -476,11 +507,16 @@ function StateMachine:_ChangeState(newState: string): ()
         return
     end
 
+    self._stateTrove:Clean()
     if previousState then
         task.spawn(previousState.OnLeave, previousState, self:GetData())
+        self:_CallTransitions(previousState, "OnLeave", self:GetData())
     end
 
-    task.defer(state.OnEnter, state, self:GetData())
+    task.defer(function()
+        self:_CallTransitions(state, "OnEnter", self:GetData())
+    end)
+    self._stateTrove:Add(task.defer(state.OnEnter, state, self:GetData()))
     
     self._CurrentState = newState
 
@@ -510,12 +546,29 @@ end
     @return ()
 ]=]
 function StateMachine:_CheckTransitions(): ()
-    for _, transition: Transition.Transition in self:_GetCurrentStateObject()._transitions do
+    for _, transition: Transition in self:_GetCurrentStateObject()._transitions do
         if transition:CanChangeState(self:GetData()) and transition:OnDataChanged(self:GetData()) then
             self:_ChangeState(transition.TargetState)
             break
         end
     end    
+end
+
+--[=[
+    Calls the transition method of the given state
+
+    @param state State
+    @param methodName string
+    @param ... any
+
+    @private
+
+    @return ()
+]=]
+function StateMachine:_CallTransitions(state: State, methodName: string, ...: any): ()
+    for _, transition: Transition in state._transitions do
+        task.spawn(transition[methodName], transition, ...)
+    end
 end
 
 export type RobloxStateMachine = typeof(StateMachine)
