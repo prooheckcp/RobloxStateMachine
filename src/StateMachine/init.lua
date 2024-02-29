@@ -225,6 +225,7 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
         error(STATE_NOT_FOUND:format("create a state machine", initialState), 2)
     end
 
+    local previousState: State = nil
     self._trove:Add(RunService.Heartbeat:Connect(function(deltaTime: number)
         if self._Destroyed then
             return
@@ -233,7 +234,12 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
         self:_CheckTransitions()
         
         local state = self:_GetCurrentStateObject()
-        
+        local firstFrame: boolean = state ~= previousState
+        previousState = state
+        if firstFrame then
+            return
+        end
+
         if not state or getmetatable(state).OnHeartbeat == state.OnHeartbeat then
             return
         end

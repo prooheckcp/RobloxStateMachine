@@ -9,21 +9,21 @@ local Red = State.new("Red")
 Red.Transitions = {GoToBlue}
 
 function Red:OnHeartbeat(data, deltatime)
-    local newData = data.timer + deltatime
-    self:ChangeData("timer", newData)
+    print(">2")
 end
 
 function Red:OnEnter(data)
-    print("red enter")
-
-    self:ChangeData("timer", 0)
+    print(">1")
     self:ChangeData("color", Color3.fromRGB(255, 0, 0))
-
+    task.delay(1, function()
+        self:ChangeState("Blue")
+    end)
 
     data.part.Color = Color3.fromRGB(255, 0, 0)
 end
 
 function Red:OnLeave()
+    print(">3")
     print("Left state!")
 end
 
