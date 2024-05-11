@@ -2,7 +2,6 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local RobloxStateMachine = require(ReplicatedStorage.RobloxStateMachine)
 
-
 local exampleStateMachine = RobloxStateMachine.new(
     "Red",
     RobloxStateMachine:LoadDirectory(script.Example.States, nil), 
@@ -14,17 +13,6 @@ local exampleStateMachine = RobloxStateMachine.new(
     }
 )
 
-
---[[
-exampleStateMachine.StateChanged:Connect(function(newState: string, previousState: string)
-    print("Our previous state was: " .. previousState .. " now our state is: " .. newState)
+task.delay(20, function()
+    exampleStateMachine:Destroy()
 end)
-
-task.wait(2)
-
-exampleStateMachine:ChangeState("Blue")
-
-task.wait(2)
-
-exampleStateMachine:ChangeData("dummyData", "Goodbye world")
-]]
