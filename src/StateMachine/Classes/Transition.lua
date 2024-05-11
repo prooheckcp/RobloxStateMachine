@@ -1,3 +1,5 @@
+local mergeTables = require(script.Parent.Parent.Functions.mergeTables)
+
 --[=[
     @class Transition
 
@@ -113,6 +115,31 @@ function Transition.new(targetState: string?): Transition
     self.TargetState = targetState or ""
 
     return self
+end
+
+--[=[
+    Extends a state inheriting the behavior from the parent state
+
+    ```lua
+    local transition = Transition.new("Blue")
+    
+    function transition:Print()
+        print("Hello World!")
+    end
+
+    local extendedTransition = transition:Extend("Red")
+
+    function extendedTransition:OnInit()
+        self:Print() -- Will print "Hello World!"
+    end
+    ```
+
+    @param targetState string
+
+    @return Transition
+]=]
+function Transition:Extend(targetState: string): Transition
+    return mergeTables(Transition.new(targetState), self)
 end
 
 --[=[
