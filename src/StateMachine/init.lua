@@ -1,11 +1,11 @@
 local HttpService = game:GetService("HttpService")
 local RunService = game:GetService("RunService")
 
-local State = require(script.State)
-local Transition = require(script.Transition)
-local Signal = require(script.Signal)
-local Trove = require(script.Trove)
-local Copy = require(script.Copy)
+local State = require(script.Classes.State)
+local Transition = require(script.Classes.Transition)
+local Signal = require(script.Vendor.Signal)
+local Trove = require(script.Vendor.Trove)
+local Copy = require(script.Functions.deepCopy)
 
 type Trove = Trove.Trove
 
@@ -551,7 +551,7 @@ function StateMachine:_CheckTransitions(): ()
             self:_ChangeState(transition.TargetState)
             break
         end
-    end    
+    end
 end
 
 --[=[

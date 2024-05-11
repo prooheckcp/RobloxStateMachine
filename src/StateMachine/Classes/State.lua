@@ -1,4 +1,5 @@
 local Transition = require(script.Parent.Transition)
+local mergeTables = require(script.Parent.Parent.Functions.mergeTables)
 
 --[=[
     @class State
@@ -117,6 +118,13 @@ function State.new(stateName: string?): State
     self.Transitions = {}
 
     return self
+end
+
+--[=[
+    Extends a class
+]=]
+function State:Extend(stateName: string)
+    return mergeTables(State.new(stateName), self)
 end
 
 --[=[
@@ -304,4 +312,8 @@ end
 
 export type State = typeof(State)
 
-return State
+return setmetatable(State, {
+    __call = function(_, properties): State
+        return State.new(properties)
+    end
+})
