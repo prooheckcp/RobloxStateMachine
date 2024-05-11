@@ -467,6 +467,12 @@ end
     @return ()
 ]=]
 function StateMachine:ChangeState(newState: string): ()
+    local currentState: State? = self:_GetCurrentStateObject()
+
+    if currentState and not currentState:CanChangeState(newState) then
+        return
+    end
+
     self:_ChangeState(newState)
 end
 

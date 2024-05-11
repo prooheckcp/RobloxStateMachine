@@ -184,6 +184,8 @@ end
     This is a **Virtual Method**. Virtual Methods are meant to be overwritten
     :::
 
+    @deprecated v1.1.7 -- This function is redundant since it essencially just works as a blocker for OnDataChanged
+
     Whether it can change to this state or not. It's a good way to lock the current state
 
     @param data {[string]: any}

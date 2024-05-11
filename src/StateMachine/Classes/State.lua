@@ -239,6 +239,25 @@ end
     This is a **Virtual Method**. Virtual Methods are meant to be overwritten
     :::
 
+    ```lua
+    function State:CanChangeState(targetState: string)
+        return targetState == "Blue" -- If the target state is blue, we can change to it
+    end
+    ```
+
+    @param _targetState string -- The state we are trying to change to
+
+    @return boolean -- Whether or not we can change to the given state
+]=]
+function State:CanChangeState(_targetState: string): boolean
+    return true
+end
+
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
     :::warning
     **OnDataChanged** only gets called when the data is changed by a **ChangeData** call
     :::
