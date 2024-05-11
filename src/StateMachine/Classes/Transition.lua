@@ -123,14 +123,16 @@ end
     Called whenever the state machine is created
 
     ```lua
-    function State:OnInit()
+    function Transition:OnInit()
         print("Hello World")
     end
     ```
 
+    @param _data {[string]: any} -- This is the data from the StateMachine itself!
+
     @return ()
 ]=]
-function Transition:OnInit(): ()
+function Transition:OnInit(_data: {[string]: any}): ()
     
 end
 
@@ -275,6 +277,25 @@ function Transition:ChangeData(index: string, newValue: any): ()
     end
 
     self._changeData(index, newValue)
+end
+
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
+    Called whenever the state machine is destroyed
+
+    ```lua
+    function Transition:OnDestroy()
+        print("I was destroyed!")
+    end
+    ```
+
+    @return ()
+]=]
+function Transition:OnDestroy(): ()
+    
 end
 
 export type Transition = typeof(Transition)

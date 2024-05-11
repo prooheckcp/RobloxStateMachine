@@ -328,6 +328,25 @@ function State:OnLeave(_data: {[string]: any}): ()
 
 end
 
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
+    Called whenever the state machine is destroyed
+
+    ```lua
+    function State:OnDestroy()
+        print("I was destroyed!")
+    end
+    ```
+
+    @return ()
+]=]
+function State:OnDestroy(): ()
+    
+end
+
 export type State = typeof(State)
 
 return setmetatable(State, {

@@ -240,10 +240,12 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
 
             stateClone._transitions[transitionClone.Name] = transitionClone
             task.spawn(transitionClone.OnInit, transitionClone, self.Data)
+            self._trove:Add(transitionClone, "OnDestroy")
         end
 
         self._States[state.Name] = stateClone
         task.spawn(stateClone.OnInit, stateClone, self.Data)
+        self._trove:Add(stateClone, "OnDestroy")
     end
 
     if not self._States[initialState] then
