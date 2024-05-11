@@ -239,10 +239,11 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
             end
 
             stateClone._transitions[transitionClone.Name] = transitionClone
+            task.spawn(transitionClone.OnInit, transitionClone, self.Data)
         end
 
-        task.spawn(stateClone.OnInit, stateClone, self.Data)
         self._States[state.Name] = stateClone
+        task.spawn(stateClone.OnInit, stateClone, self.Data)
     end
 
     if not self._States[initialState] then

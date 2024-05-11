@@ -115,7 +115,22 @@ function Transition.new(targetState: string?): Transition
     return self
 end
 
-function Transition:OnInit()
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
+    Called whenever the state machine is created
+
+    ```lua
+    function State:OnInit()
+        print("Hello World")
+    end
+    ```
+
+    @return ()
+]=]
+function Transition:OnInit(): ()
     
 end
 

@@ -121,9 +121,27 @@ function State.new(stateName: string?): State
 end
 
 --[=[
-    Extends a class
+    Extends a state inheriting the behavior from the parent state
+
+    ```lua
+    local state = State.new("Blue")
+    
+    function state:Print()
+        print("Hello World!")
+    end
+
+    local extendedState = state:Extend("Red")
+
+    function extendedState:OnInit()
+        self:Print() -- Will print "Hello World!"
+    end
+    ```
+
+    @param stateName string
+
+    @return State
 ]=]
-function State:Extend(stateName: string)
+function State:Extend(stateName: string): State
     return mergeTables(State.new(stateName), self)
 end
 
