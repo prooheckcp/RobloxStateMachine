@@ -7,9 +7,9 @@
 It allows us to easily manage what should an object do at each given state and when/how it should change
 between them"><meta data-rh="true" property="og:description" content="State Machines consist of state managers that dictate at which state does an object currently meet at.
 It allows us to easily manage what should an object do at each given state and when/how it should change
-between them"><link data-rh="true" rel="canonical" href="https://prooheckcp.github.io/RobloxStateMachine/api/StateMachine"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachine/api/StateMachine" hreflang="en"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachine/api/StateMachine" hreflang="x-default"><link rel="stylesheet" href="/RobloxStateMachine/assets/css/styles.abe73a28.css">
-<link rel="preload" href="/RobloxStateMachine/assets/js/runtime~main.8fa59ceb.js" as="script">
-<link rel="preload" href="/RobloxStateMachine/assets/js/main.08115e46.js" as="script">
+between them"><link data-rh="true" rel="icon" href="/RobloxStateMachine/RobloxStateMachineIcon.png"><link data-rh="true" rel="canonical" href="https://prooheckcp.github.io/RobloxStateMachine/api/StateMachine"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachine/api/StateMachine" hreflang="en"><link data-rh="true" rel="alternate" href="https://prooheckcp.github.io/RobloxStateMachine/api/StateMachine" hreflang="x-default"><link rel="stylesheet" href="/RobloxStateMachine/assets/css/styles.3f927610.css">
+<link rel="preload" href="/RobloxStateMachine/assets/js/runtime~main.c0ebe5b1.js" as="script">
+<link rel="preload" href="/RobloxStateMachine/assets/js/main.71e1f0dd.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -94,31 +94,31 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
     <span class="token punctuation">}</span>
 <span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetCurrentState"><code style="text-decoration:none">GetCurrentState</code><a href="#GetCurrentState" class="hash-link" aria-label="Direct link to GetCurrentState" title="Direct link to GetCurrentState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L292"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">GetCurrentState</code><code>(</code><code>) → </code><code class="blue_P4bS">string</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetCurrentState"><code style="text-decoration:none">GetCurrentState</code><a href="#GetCurrentState" class="hash-link" aria-label="Direct link to GetCurrentState" title="Direct link to GetCurrentState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L295"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">GetCurrentState</code><code>(</code><code>) → </code><code class="blue_P4bS">string</code></div><div>
 <p>Returns the current state of the State Machine</p>
 <pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> exampleStateMachine <span class="token operator">=</span> RobloxStateMachine<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"Default"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>exampleStateMachine<span class="token punctuation">:</span><span class="token function">GetCurrentState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- Default</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetPreviousState"><code style="text-decoration:none">GetPreviousState</code><a href="#GetPreviousState" class="hash-link" aria-label="Direct link to GetPreviousState" title="Direct link to GetPreviousState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L307"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">GetPreviousState</code><code>(</code><code>) → </code><code class="blue_P4bS">string</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetPreviousState"><code style="text-decoration:none">GetPreviousState</code><a href="#GetPreviousState" class="hash-link" aria-label="Direct link to GetPreviousState" title="Direct link to GetPreviousState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L310"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">GetPreviousState</code><code>(</code><code>) → </code><code class="blue_P4bS">string</code></div><div>
 <p>Returns the previous state of the State Machine</p>
 <pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> exampleStateMachine <span class="token operator">=</span> RobloxStateMachine<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"Default"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">...</span>BlueStateHere<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 exampleStateMachine<span class="token punctuation">:</span><span class="token function">ChangeState</span><span class="token punctuation">(</span><span class="token string">"Blue"</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>exampleStateMachine<span class="token punctuation">:</span><span class="token function">GetPreviousState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- "Default"</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ChangeData"><code style="text-decoration:none">ChangeData</code><a href="#ChangeData" class="hash-link" aria-label="Direct link to ChangeData" title="Direct link to ChangeData">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L326"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">ChangeData</code><code>(</code><div class="inset_uKQm"><div><code>index<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code></div><div><code>newValue<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ChangeData"><code style="text-decoration:none">ChangeData</code><a href="#ChangeData" class="hash-link" aria-label="Direct link to ChangeData" title="Direct link to ChangeData">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L329"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">ChangeData</code><code>(</code><div class="inset_uKQm"><div><code>index<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code></div><div><code>newValue<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
 <p>Changing data request. You can also just Get the data and change the data at run time.</p>
 <pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> stateMachine <span class="token operator">=</span> RobloxStateMachine<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"state"</span><span class="token punctuation">,</span> states<span class="token punctuation">,</span> <span class="token punctuation">{</span>health <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 stateMachine<span class="token punctuation">:</span><span class="token function">GetData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>health <span class="token operator">=</span> <span class="token number">50</span> <span class="token comment">-- This is the same as</span>
 stateMachine<span class="token punctuation">:</span><span class="token function">ChangeData</span><span class="token punctuation">(</span><span class="token string">"Health"</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span> <span class="token comment">-- this</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetData"><code style="text-decoration:none">GetData</code><a href="#GetData" class="hash-link" aria-label="Direct link to GetData" title="Direct link to GetData">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L350"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">GetData</code><code>(</code><code>) → </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetData"><code style="text-decoration:none">GetData</code><a href="#GetData" class="hash-link" aria-label="Direct link to GetData" title="Direct link to GetData">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L353"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">GetData</code><code>(</code><code>) → </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">string</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code></div><div>
 <p>Gets the custom data of this state machine object.</p>
 <pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> stateMachine <span class="token operator">=</span> RobloxStateMachine<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"Start"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>state1<span class="token punctuation">,</span> state2<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>health <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token function">print</span><span class="token punctuation">(</span>stateMachine<span class="token punctuation">:</span><span class="token function">GetData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>health<span class="token punctuation">)</span> <span class="token comment">-- 20</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="LoadDirectory"><code style="text-decoration:none">LoadDirectory</code><a href="#LoadDirectory" class="hash-link" aria-label="Direct link to LoadDirectory" title="Direct link to LoadDirectory">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L381"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">LoadDirectory</code><code>(</code><div class="inset_uKQm"><div><code>directory<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code></div><div><code>names<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS">string</code><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="LoadDirectory"><code style="text-decoration:none">LoadDirectory</code><a href="#LoadDirectory" class="hash-link" aria-label="Direct link to LoadDirectory" title="Direct link to LoadDirectory">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L384"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">LoadDirectory</code><code>(</code><div class="inset_uKQm"><div><code>directory<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code></div><div><code>names<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS">string</code><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code><span class="inlineDescription_G7Er">-- <span>
 <p>If you wish to only load specific states you can pass an array of names</p>
 </span></span></div></div><code>) → </code><code class="purple_ieR2">{</code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code></div><div>
 <p>Used to load thru a directory. It's specially useful to load states and or transitions!</p>
@@ -132,7 +132,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
 <span class="token punctuation">)</span>
 </code></pre>
 <p>You can also use it to load specific files by feeding the names you wish to load</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Destroy"><code style="text-decoration:none">Destroy</code><a href="#Destroy" class="hash-link" aria-label="Direct link to Destroy" title="Direct link to Destroy">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L442"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">Destroy</code><code>(</code><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Destroy"><code style="text-decoration:none">Destroy</code><a href="#Destroy" class="hash-link" aria-label="Direct link to Destroy" title="Direct link to Destroy">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L445"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">Destroy</code><code>(</code><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
 <p>
   If you wish to stop using the state machine at any point you should then clear
   it from the memory. Call Destroy whenever you are done with the state machine.
@@ -143,7 +143,7 @@ task<span class="token punctuation">.</span><span class="token function">wait</s
 
 stateMachine<span class="token punctuation">:</span><span class="token function">Destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ChangeState"><code style="text-decoration:none">ChangeState</code><a href="#ChangeState" class="hash-link" aria-label="Direct link to ChangeState" title="Direct link to ChangeState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L466"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">ChangeState</code><code>(</code><div class="inset_uKQm"><div><code>newState<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ChangeState"><code style="text-decoration:none">ChangeState</code><a href="#ChangeState" class="hash-link" aria-label="Direct link to ChangeState" title="Direct link to ChangeState">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/prooheckcp/RobloxStateMachine/blob/master/src/StateMachine/init.lua#L469"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>StateMachine<!-- -->:</code><code class="green_DgR4">ChangeState</code><code>(</code><div class="inset_uKQm"><div><code>newState<!-- -->: </code><code class="blue_P4bS">string</code><span class="inlineDescription_G7Er">-- <span>
 <p>The name of the new state</p>
 </span></span></div></div><code>) → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div><div>
 <p>Forcelly changes the current state of our state machine to a new one</p>
@@ -193,7 +193,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 292,
+                &quot;line&quot;: 295,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -209,7 +209,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 307,
+                &quot;line&quot;: 310,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -236,7 +236,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 326,
+                &quot;line&quot;: 329,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -252,7 +252,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 350,
+                &quot;line&quot;: 353,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -279,7 +279,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 381,
+                &quot;line&quot;: 384,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -295,7 +295,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 442,
+                &quot;line&quot;: 445,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -317,7 +317,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             ],
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 466,
+                &quot;line&quot;: 469,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -340,7 +340,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;private&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 479,
+                &quot;line&quot;: 488,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -363,7 +363,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;private&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 492,
+                &quot;line&quot;: 501,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -380,7 +380,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;private&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 536,
+                &quot;line&quot;: 545,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -397,7 +397,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;private&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 548,
+                &quot;line&quot;: 557,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         },
@@ -430,7 +430,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
             &quot;function_type&quot;: &quot;method&quot;,
             &quot;private&quot;: true,
             &quot;source&quot;: {
-                &quot;line&quot;: 568,
+                &quot;line&quot;: 577,
                 &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
             }
         }
@@ -550,7 +550,7 @@ stateMachine<span class="token punctuation">:</span><span class="token function"
         &quot;path&quot;: &quot;src/StateMachine/init.lua&quot;
     }
 }</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#Data" class="table-of-contents__link toc-highlight">Data</a></li><li><a href="#DataChanged⚡" class="table-of-contents__link toc-highlight">DataChanged⚡</a></li><li><a href="#State" class="table-of-contents__link toc-highlight">State</a></li><li><a href="#StateChanged⚡" class="table-of-contents__link toc-highlight">StateChanged⚡</a></li><li><a href="#Transition" class="table-of-contents__link toc-highlight">Transition</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#ChangeData" class="table-of-contents__link toc-highlight">:ChangeData</a></li><li><a href="#ChangeState" class="table-of-contents__link toc-highlight">:ChangeState</a></li><li><a href="#Destroy" class="table-of-contents__link toc-highlight">:Destroy</a></li><li><a href="#GetCurrentState" class="table-of-contents__link toc-highlight">:GetCurrentState</a></li><li><a href="#GetData" class="table-of-contents__link toc-highlight">:GetData</a></li><li><a href="#GetPreviousState" class="table-of-contents__link toc-highlight">:GetPreviousState</a></li><li><a href="#LoadDirectory" class="table-of-contents__link toc-highlight">:LoadDirectory</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 prooheckcp. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/RobloxStateMachine/assets/js/runtime~main.8fa59ceb.js"></script>
-<script src="/RobloxStateMachine/assets/js/main.08115e46.js"></script>
+<script src="/RobloxStateMachine/assets/js/runtime~main.c0ebe5b1.js"></script>
+<script src="/RobloxStateMachine/assets/js/main.71e1f0dd.js"></script>
 </body>
 </html>
