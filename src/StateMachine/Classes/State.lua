@@ -1,4 +1,5 @@
 local Transition = require(script.Parent.Transition)
+local mergeTables = require(script.Parent.Parent.Functions.mergeTables)
 
 --[=[
     @class State
@@ -120,6 +121,31 @@ function State.new(stateName: string?): State
 end
 
 --[=[
+    Extends a state inheriting the behavior from the parent state
+
+    ```lua
+    local state = State.new("Blue")
+    
+    function state:Print()
+        print("Hello World!")
+    end
+
+    local extendedState = state:Extend("Red")
+
+    function extendedState:OnInit()
+        self:Print() -- Will print "Hello World!"
+    end
+    ```
+
+    @param stateName string
+
+    @return State
+]=]
+function State:Extend(stateName: string): State
+    return mergeTables(State.new(stateName), self)
+end
+
+--[=[
     Forcelly changes the current state of our state machine to a new one
 
     @param newState string -- The name of the new state
@@ -206,6 +232,25 @@ end
 ]=]
 function State:OnInit(_data: {[string]: any}): ()
 
+end
+
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
+    ```lua
+    function State:CanChangeState(targetState: string)
+        return targetState == "Blue" -- If the target state is blue, we can change to it
+    end
+    ```
+
+    @param _targetState string -- The state we are trying to change to
+
+    @return boolean -- Whether or not we can change to the given state
+]=]
+function State:CanChangeState(_targetState: string): boolean
+    return true
 end
 
 --[=[
@@ -302,6 +347,29 @@ function State:OnLeave(_data: {[string]: any}): ()
 
 end
 
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
+    Called whenever the state machine is destroyed
+
+    ```lua
+    function State:OnDestroy()
+        print("I was destroyed!")
+    end
+    ```
+
+    @return ()
+]=]
+function State:OnDestroy(): ()
+    
+end
+
 export type State = typeof(State)
 
-return State
+return setmetatable(State, {
+    __call = function(_, properties): State
+        return State.new(properties)
+    end
+})

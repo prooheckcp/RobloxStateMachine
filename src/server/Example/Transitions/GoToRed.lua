@@ -4,11 +4,11 @@ local Players = game:GetService("Players")
 local StateMachine = require(ReplicatedStorage.RobloxStateMachine)
 local Transition = StateMachine.Transition
 
-local GoToBlue = Transition "Blue"
-GoToBlue.Name = "GoToBlue"
+local GoToBlue = Transition "Red"
+GoToBlue.Name = "GoToRed"
 
 function GoToBlue:OnInit()
-   -- print("Init our transition!")
+    --print("Init our transition!")
 end
 
 function GoToBlue:OnEnter()
@@ -25,7 +25,7 @@ function GoToBlue:OnDataChanged(data)
         local playerPosition: Vector3 = player.Character.PrimaryPart.Position     
         local distance: number = (partPosition - playerPosition).Magnitude
 
-        if distance < 10 then
+        if distance > 15 then
             return true
         end
     end

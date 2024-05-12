@@ -1,4 +1,4 @@
-![](https://cdn.discordapp.com/attachments/670023265455964198/1170892030101159946/RobloxStateMachine.png?ex=655ab12e&is=65483c2e&hm=60cad6920fb0d720cd6bd6d23c4f73190f20e39f8d15b755b00dbbaf1d600ae2&)
+![](./gh-assets/RobloxStateMachine.png)
 
 RobloxStateMachine is a lightweight library that simplifies the creation and management of state machines. It allows you create States and Transitions which are reusable and can contain/interact with different data.
 

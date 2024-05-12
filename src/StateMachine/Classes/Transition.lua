@@ -1,3 +1,5 @@
+local mergeTables = require(script.Parent.Parent.Functions.mergeTables)
+
 --[=[
     @class Transition
 
@@ -116,6 +118,52 @@ function Transition.new(targetState: string?): Transition
 end
 
 --[=[
+    Extends a state inheriting the behavior from the parent state
+
+    ```lua
+    local transition = Transition.new("Blue")
+    
+    function transition:Print()
+        print("Hello World!")
+    end
+
+    local extendedTransition = transition:Extend("Red")
+
+    function extendedTransition:OnInit()
+        self:Print() -- Will print "Hello World!"
+    end
+    ```
+
+    @param targetState string
+
+    @return Transition
+]=]
+function Transition:Extend(targetState: string): Transition
+    return mergeTables(Transition.new(targetState), self)
+end
+
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
+    Called whenever the state machine is created
+
+    ```lua
+    function Transition:OnInit()
+        print("Hello World")
+    end
+    ```
+
+    @param _data {[string]: any} -- This is the data from the StateMachine itself!
+
+    @return ()
+]=]
+function Transition:OnInit(_data: {[string]: any}): ()
+    
+end
+
+--[=[
     :::info
     This is a **Virtual Method**. Virtual Methods are meant to be overwritten
     :::
@@ -162,6 +210,8 @@ end
     :::info
     This is a **Virtual Method**. Virtual Methods are meant to be overwritten
     :::
+
+    @deprecated v1.1.7 -- This function is redundant since it essencially just works as a blocker for OnDataChanged
 
     Whether it can change to this state or not. It's a good way to lock the current state
 
@@ -258,6 +308,29 @@ function Transition:ChangeData(index: string, newValue: any): ()
     self._changeData(index, newValue)
 end
 
+--[=[
+    :::info
+    This is a **Virtual Method**. Virtual Methods are meant to be overwritten
+    :::
+
+    Called whenever the state machine is destroyed
+
+    ```lua
+    function Transition:OnDestroy()
+        print("I was destroyed!")
+    end
+    ```
+
+    @return ()
+]=]
+function Transition:OnDestroy(): ()
+    
+end
+
 export type Transition = typeof(Transition)
 
-return Transition
+return setmetatable(Transition, {
+    __call = function(_, properties): Transition
+        return Transition.new(properties)
+    end
+})

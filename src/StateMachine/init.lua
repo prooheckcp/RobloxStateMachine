@@ -1,11 +1,11 @@
 local HttpService = game:GetService("HttpService")
 local RunService = game:GetService("RunService")
 
-local State = require(script.State)
-local Transition = require(script.Transition)
-local Signal = require(script.Signal)
-local Trove = require(script.Trove)
-local Copy = require(script.Copy)
+local State = require(script.Classes.State)
+local Transition = require(script.Classes.Transition)
+local Signal = require(script.Vendor.Signal)
+local Trove = require(script.Vendor.Trove)
+local Copy = require(script.Functions.deepCopy)
 
 type Trove = Trove.Trove
 
@@ -239,10 +239,13 @@ function StateMachine.new(initialState: string, states: {State}, initialData: {[
             end
 
             stateClone._transitions[transitionClone.Name] = transitionClone
+            task.spawn(transitionClone.OnInit, transitionClone, self.Data)
+            self._trove:Add(transitionClone, "OnDestroy")
         end
 
-        task.spawn(stateClone.OnInit, stateClone, self.Data)
         self._States[state.Name] = stateClone
+        task.spawn(stateClone.OnInit, stateClone, self.Data)
+        self._trove:Add(stateClone, "OnDestroy")
     end
 
     if not self._States[initialState] then
@@ -464,6 +467,12 @@ end
     @return ()
 ]=]
 function StateMachine:ChangeState(newState: string): ()
+    local currentState: State? = self:_GetCurrentStateObject()
+
+    if currentState and not currentState:CanChangeState(newState) then
+        return
+    end
+
     self:_ChangeState(newState)
 end
 
@@ -548,10 +557,10 @@ end
 function StateMachine:_CheckTransitions(): ()
     for _, transition: Transition in self:_GetCurrentStateObject()._transitions do
         if transition:CanChangeState(self:GetData()) and transition:OnDataChanged(self:GetData()) then
-            self:_ChangeState(transition.TargetState)
+            self:ChangeState(transition.TargetState)
             break
         end
-    end    
+    end
 end
 
 --[=[
@@ -575,4 +584,8 @@ export type RobloxStateMachine = typeof(StateMachine)
 export type State = State.State
 export type Transition = Transition.Transition
 
-return StateMachine
+return setmetatable(StateMachine, {
+    __call = function(_, initialState: string, states: {State}, initialData: {[string]: any}?): RobloxStateMachine
+        return StateMachine.new(initialState, states, initialData)
+    end
+})

@@ -1,0 +1,40 @@
+/*
+:root {
+  --primary-color: #86C232;
+  --secondary-color: #61892F;
+  --background-color: #222629;
+}
+*/
+
+:root {
+  --primary-color: #53900F;
+  --secondary-color: #1F6521;
+  --background-color: rgba(34,38,41,1);
+}
+
+html[data-theme='dark']{
+  --ifm-background-color: var(--background-color);
+  --ifm-color-primary: var(--primary-color);
+  --ifm-color-primary-dark: var(--primary-color);
+  --ifm-color-primary-darker: var(--primary-color);
+  --ifm-color-primary-darkest: var(--primary-color);
+  --ifm-color-primary-light: var(--primary-color);
+  --ifm-color-primary-lighter: var(--primary-color);
+  --ifm-color-primary-lightest: var(--primary-color);
+  --ifm-background-color: var(--background-color);
+  --ifm-code-font-size: 95%;
+  --ifm-navbar-background-color: var(--secondary-color);
+  --ifm-footer-background-color: var(--secondary-color);
+  --ifm-background-color: var(--background-color);
+  --ifm-footer-background-color: var(--secondary-color);
+  --ifm-footer-color: var(--ifm-footer-link-color);
+  --ifm-footer-link-color: var(--ifm-color-secondary);
+  --ifm-footer-title-color: var(--ifm-color-white);
+}
+
+.footer--dark {
+  --ifm-footer-background-color: var(--secondary-color) !important;
+  --ifm-footer-color: var(--ifm-footer-link-color) !important;
+  --ifm-footer-link-color: var(--ifm-color-secondary) !important;
+  --ifm-footer-title-color: var(--ifm-color-white) !important;
+}
