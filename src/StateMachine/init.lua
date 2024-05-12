@@ -557,7 +557,7 @@ end
 function StateMachine:_CheckTransitions(): ()
     for _, transition: Transition in self:_GetCurrentStateObject()._transitions do
         if transition:CanChangeState(self:GetData()) and transition:OnDataChanged(self:GetData()) then
-            self:_ChangeState(transition.TargetState)
+            self:ChangeState(transition.TargetState)
             break
         end
     end

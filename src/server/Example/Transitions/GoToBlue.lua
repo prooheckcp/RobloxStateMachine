@@ -8,11 +8,11 @@ local GoToBlue = Transition "Blue"
 GoToBlue.Name = "GoToBlue"
 
 function GoToBlue:OnInit()
-    print("Init our transition!")
+   -- print("Init our transition!")
 end
 
 function GoToBlue:OnEnter()
-    print("Enter")
+    --print("Enter")
 end
 
 function GoToBlue:OnDataChanged(data)
@@ -34,11 +34,11 @@ function GoToBlue:OnDataChanged(data)
 end
 
 function GoToBlue:OnLeave()
-    print("Leave", self.Data)
+    --print("Leave", self.Data)
 end
 
 function GoToBlue:OnDestroy()
-    print("Destroy our transition")
+    --print("Destroy our transition")
 end
 
 return GoToBlue
