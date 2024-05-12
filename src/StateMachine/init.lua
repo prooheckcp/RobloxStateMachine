@@ -584,7 +584,7 @@ export type RobloxStateMachine = typeof(StateMachine)
 export type State = State.State
 export type Transition = Transition.Transition
 
-return setmetatable(State, {
+return setmetatable(StateMachine, {
     __call = function(_, initialState: string, states: {State}, initialData: {[string]: any}?): RobloxStateMachine
         return StateMachine.new(initialState, states, initialData)
     end
