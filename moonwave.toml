@@ -2,8 +2,3 @@
 onBrokenLinks = "throw"
 onBrokenMarkdownLinks = "warn"
 favicon = "RobloxStateMachineIcon.png"
-tagline = "A State Machine Implementation for Roblox games!"
-
-[home]
-enabled = false
-includeReadme = false

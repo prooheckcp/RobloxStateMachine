@@ -1,0 +1,40 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+
+:root {
+  --primary-color: #66FCF1;
+  --secondary-color: #45a29e;
+  --background-color: #1F2833;
+}
+
+html[data-theme='dark']{
+  --ifm-background-color: #1F2833;
+  --ifm-color-primary: var(--primary-color);
+  --ifm-color-primary-dark: var(--primary-color);
+  --ifm-color-primary-darker: var(--primary-color);
+  --ifm-color-primary-darkest: var(--primary-color);
+  --ifm-color-primary-light: var(--primary-color);
+  --ifm-color-primary-lighter: var(--primary-color);
+  --ifm-color-primary-lightest: var(--primary-color);
+  --ifm-background-color: var(--background-color);
+  --ifm-code-font-size: 95%;
+  --ifm-navbar-background-color: var(--secondary-color);
+  --ifm-footer-background-color: var(--secondary-color);
+  --ifm-background-color: var(--background-color);
+  --ifm-footer-background-color: var(--secondary-color);
+  --ifm-footer-color: var(--ifm-footer-link-color);
+  --ifm-footer-link-color: var(--ifm-color-secondary);
+  --ifm-footer-title-color: var(--ifm-color-white);
+}
+
+.footer--dark {
+  --ifm-footer-background-color: var(--secondary-color);
+  --ifm-footer-color: var(--ifm-footer-link-color);
+  --ifm-footer-link-color: var(--ifm-color-secondary);
+  --ifm-footer-title-color: var(--ifm-color-white);
+}
